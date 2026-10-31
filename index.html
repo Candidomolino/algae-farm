@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#274d3f">
+  <meta name="description" content="Uma pequena biorrefinaria de microalgas. Explore, decida e compare rotas para biodiesel e biomateriais.">
+  <title>Algae Farm · Uma pequena biorrefinaria</title>
+  <style>:root{--ink:#284b3e;--muted:#68786a;--paper:#f5f1e5;--cream:#fcf9f0;--line:#d9ddcb;--green:#315a46;--amber:#e3b557;--shadow:0 15px 45px #32463516;font-family:'Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #af722b;outline-offset:4px}button{transition:background .15s,transform .15s}button:active:not(:disabled){transform:translateY(1px)}button:disabled{transform:none}[hidden]{display:none!important}a{color:inherit}small{font-size:11px}p{line-height:1.55}h1,h2,h3,p{margin-top:0}h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400}h1{font-size:43px;line-height:1.12;letter-spacing:-1.4px;margin-bottom:20px}h2{font-size:34px;letter-spacing:-.7px;line-height:1.16;margin-bottom:14px}h3{font-size:18px;margin-bottom:9px}strong{font-weight:650}.app{max-width:1500px;margin:auto;padding:0 42px}.topbar{min-height:100px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--line)}.brand{display:flex;text-decoration:none;gap:12px;align-items:center;font-family:Georgia,serif;font-size:28px;letter-spacing:-.7px}.brandmark{width:45px;height:45px;display:grid;place-items:center;background:var(--green);color:#e4d7a4;border-radius:10px;font-family:system-ui;font-size:42px;line-height:1}.brand small{display:block;font:9px/1.7 'Segoe UI',sans-serif;letter-spacing:1.7px;color:var(--muted);margin-top:4px}.course{margin-left:auto;font-size:10px;letter-spacing:1.5px;color:var(--muted)}.course>span{padding:0 9px}.icon-button{border:1px solid #cdd5c4;background:transparent;color:var(--ink);border-radius:50%;width:36px;height:36px;flex-shrink:0;font-size:21px;display:grid;place-items:center}.icon-button:hover{background:#e7eadb}main{padding-top:24px}.workbench{display:grid;grid-template-columns:350px 1fr;gap:38px;align-items:stretch}.sidebar{padding:25px 0 10px}.eyebrow{font-size:10px;letter-spacing:1.5px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:23px}.status-dot,.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#5d8255}.intro{font-size:15px;color:var(--muted);max-width:330px;margin-bottom:21px}.session-label{font-size:12px;font-weight:600}.session-label span{padding:0 8px;color:#abb19d}.contract-choices{display:grid;gap:12px;margin:24px 0}.contract-card{border:1px solid #d1d8c4;background:var(--cream);border-radius:10px;padding:18px;text-align:left;display:flex;gap:15px;align-items:center;color:var(--ink);box-shadow:0 3px 8px #34462a03}.contract-card:hover{border-color:#719173;background:#fffdf5;box-shadow:0 5px 15px #34462a0b}.contract-symbol{height:48px;width:44px;flex-shrink:0;display:grid;place-items:center;font-size:30px;background:#e6ebd5;border-radius:9px;color:#557747}.material-symbol{background:#efe2cb;color:#a27537}.contract-card strong{display:block;font-size:15px}.contract-card small{display:block;margin-top:5px;color:var(--muted);font-size:12px}.contract-card em{display:block;font-style:normal;font-size:11px;font-weight:600;margin-top:13px}.contract-card b{margin-left:10px}.model-note{font-size:11px;color:#7a8272;line-height:1.6;margin:20px 0 4px}.farm-panel{border:1px solid #cdd6bb;border-radius:13px;overflow:hidden;align-self:start;margin-top:7px;background:#e9eddc;box-shadow:var(--shadow)}.map-heading{display:flex;justify-content:space-between;align-items:center;padding:17px 20px;background:#f8f8ec;font-size:10px;font-weight:650;letter-spacing:.8px}.map-heading .live-dot{margin-right:6px}#weather-label{letter-spacing:0;font-weight:400;font-size:12px}.scene{height:515px;position:relative;background:#93ad66;overflow:hidden}canvas{display:block;width:100%;height:100%;touch-action:none;image-rendering:pixelated}.map-caption{position:absolute;bottom:16px;left:16px;pointer-events:none;padding:8px 13px;border-radius:5px;background:#294b3edb;color:#f9f3d6;font-family:Georgia,serif;font-size:16px;box-shadow:0 4px 8px #0001}.map-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:62px;padding:12px 18px;background:#f8f8ec}.map-footer p{font-size:11px;margin:0;color:var(--muted)}.map-footer button{font-size:12px}.page-footer{display:flex;gap:20px;align-items:center;font-size:10px;letter-spacing:.7px;color:#7e8875;padding:24px 0}.page-footer>span:nth-child(2){margin-left:auto;font-family:Georgia,serif;letter-spacing:0;font-style:italic;font-size:13px}.version-label{color:#9b9f8c}.text-button{border:0;background:none;color:var(--green);padding:4px 0;text-align:left;font-size:12px}.text-button:hover{text-decoration:underline}.primary,.secondary{border:0;border-radius:6px;padding:13px 19px;font-size:13px;font-weight:650;display:inline-flex;justify-content:center;align-items:center;gap:12px;min-height:45px;text-decoration:none}.primary{background:var(--green);color:#faf6e7}.primary:hover{background:#224333}.secondary{background:#e7ebdc;color:var(--ink);border:1px solid #cbd5bf}.secondary:hover{background:#dce4cf}.secondary span{font-size:10px;background:#f7f9ed;padding:2px 5px;border-radius:3px}.full{width:100%}.full>span{margin-left:auto}.resource-bar{display:flex;border:1px solid var(--line);border-radius:10px;margin-bottom:24px;background:#faf8ef;min-height:76px;align-items:center}.resource-bar small{display:block;letter-spacing:1px;font-size:9px;color:var(--muted);margin-bottom:5px}.contract-pill{display:flex;gap:13px;padding:0 22px;align-items:center;min-width:195px}.contract-pill>span{font-size:29px;color:#668157}.contract-pill strong{font-family:Georgia,serif;font-size:18px;font-weight:400}.resource{padding:0 25px;border-left:1px solid var(--line);flex:1}.resource strong{font-size:24px;font-weight:600}.resource em{font-size:13px;font-weight:400;font-style:normal;color:#8b9582}.timer{padding:0 25px;border-left:1px solid var(--line);font-variant-numeric:tabular-nums}.timer strong{font-size:23px;font-weight:500}.timer.urgent{color:#99583b}.mission-prompt{font-size:14px;color:var(--muted)}#mission h1{font-size:38px;margin-bottom:12px}#mission .eyebrow{margin-bottom:15px}.step-list{list-style:none;padding:0;margin:25px 0;display:grid;gap:13px}.step-list li{display:flex;align-items:center;gap:10px;font-size:12px;color:#89937f}.step-list i{width:23px;height:23px;display:grid;place-items:center;border:1px solid #c8d0bd;border-radius:50%;font-style:normal;font-size:10px}.step-list .current{color:var(--green);font-weight:650}.step-list .current i{background:var(--green);border-color:var(--green);color:#f6f1dc}.step-list .done{color:#6e8265}.step-list .done i{background:#e3e9d4;border-color:#d0dbbe}.order-note{border-top:1px solid var(--line);padding-top:18px;margin-top:10px}.order-note small,.batch-note small{font-size:9px;font-weight:650;letter-spacing:1px;color:var(--muted)}.order-note p{font-size:12px;margin:8px 0 3px}.batch-note{margin-top:20px;background:#e9eddf;border-radius:7px;padding:13px;font-size:12px;line-height:1.7}.batch-note:empty{display:none}.batch-note strong{display:block;margin:3px 0}.batch-note p{font-size:11px;margin:5px 0 0;color:var(--muted)}dialog{border:1px solid #d2d7c5;border-radius:14px;background:var(--cream);color:var(--ink);padding:27px 30px 30px;width:min(820px,calc(100% - 28px));max-height:calc(100dvh - 30px);box-shadow:0 30px 100px #17322633}dialog::backdrop{background:#18352988;backdrop-filter:blur(4px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}.dialog-head .eyebrow{margin:0}.dialog-head .icon-button{border:0;font-size:25px}.dialog-copy{font-size:14px;color:var(--muted);max-width:660px;margin-bottom:21px}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.choice-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.choice{border:1px solid #d5dac8;border-radius:8px;padding:17px 16px;background:#f7f5e9;color:var(--ink);text-align:left;min-height:210px;display:flex;flex-direction:column}.choice:hover:not(:disabled){border-color:#79916b;background:#f2f3e3}.choice.selected{border:2px solid #4f7550;padding:16px 15px;background:#eef2df;box-shadow:0 0 0 2px #dce6cc}.choice strong{font-size:15px;line-height:1.3;display:block;margin-bottom:11px}.choice p{font-size:12px;color:var(--muted);margin:0 0 14px}.choice .detail{font-size:10px;line-height:1.5;margin-top:auto;margin-bottom:12px;color:#6b7d61}.chips{display:flex;flex-wrap:wrap;gap:4px}.chip{background:#e5e8d8;color:#556b4c;border-radius:4px;font-size:10px;padding:4px 5px;white-space:nowrap}.choice .disabled-reason{font-size:11px;color:#8a4e35;margin-top:8px}.decision-preview{background:#edf0e1;padding:13px 16px;border-radius:7px;font-size:12px;line-height:1.6;margin:12px 0 20px}.decision-preview strong{font-weight:700}.dialog-actions{display:flex;gap:10px;justify-content:flex-end;align-items:center;margin-top:20px}.instruction-list{display:grid;gap:16px;margin:24px 0;font-size:14px;line-height:1.6}.instruction-list strong{color:var(--green)}.source-links{font-size:12px;line-height:1.8}.result-badge{display:inline-flex;padding:6px 11px;background:#dfe8ca;color:#406444;font-size:11px;letter-spacing:.6px;border-radius:4px;margin-bottom:15px}.result-badge.partial{background:#f0e4cb;color:#89613b}.result-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.result-metrics div{border:1px solid var(--line);border-radius:7px;padding:13px}.result-metrics strong{display:block;font-size:23px;font-weight:500;margin-bottom:4px}.result-metrics small{font-size:10px;color:var(--muted)}.explanations{font-size:13px;line-height:1.6;padding-left:18px}.explanations li{padding-left:5px;margin-bottom:8px}.question-box{border-left:3px solid var(--amber);padding:12px 16px;background:#f1ecd8;margin:20px 0;font-size:15px;line-height:1.5;font-family:Georgia,serif}.ledger{border-collapse:collapse;font-size:11px;width:100%;margin-top:16px}.ledger th,.ledger td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}.ledger th{font-weight:650}details summary{cursor:pointer;font-size:12px;padding:10px 0}.save-text{width:100%;min-height:180px;font:12px/1.5 monospace;padding:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#294c3f;color:#fff9df;padding:13px 20px;border-radius:7px;font-size:13px;z-index:10;transition:.2s;max-width:90vw;box-shadow:var(--shadow)}.toast.visible{opacity:1;transform:translate(-50%,0)}
+@media(min-width:1500px){.scene{height:570px}}
+@media(max-width:1100px){.app{padding:0 24px}.workbench{grid-template-columns:310px 1fr;gap:25px}.course{font-size:9px;letter-spacing:.6px}.resource{padding:0 15px}.contract-pill{padding:0 15px;min-width:160px}.timer{padding:0 15px}.scene{height:540px}h1{font-size:39px}}
+@media(max-width:800px){.app{padding:0 18px}.topbar{min-height:78px}.brand{font-size:25px}.brandmark{width:38px;height:38px;font-size:35px}.brand small{font-size:8px}.course{display:none}.topbar .icon-button{margin-left:auto}.workbench{grid-template-columns:260px 1fr;gap:20px}.sidebar{padding-top:15px}h1{font-size:34px}.intro{font-size:13px}.contract-card{padding:13px;gap:10px}.contract-symbol{width:35px;height:43px}.contract-card strong{font-size:13px}.contract-card small{font-size:11px}.contract-card em{font-size:10px}.scene{height:540px}.map-heading{padding:13px 12px;font-size:8px}.map-heading #weather-label{font-size:10px}.map-heading .live-dot{display:none}.resource-bar{flex-wrap:wrap;min-height:68px;margin-bottom:20px}.contract-pill{min-width:130px;padding:0 12px}.contract-pill>span{display:none}.resource{padding:0 13px}.resource strong{font-size:20px}.resource em{font-size:11px}.timer{padding:0 12px}.resource-bar small{font-size:8px}.timer strong{font-size:20px}.contract-pill strong{font-size:16px}.map-footer{padding:10px;flex-wrap:wrap}.map-footer p{font-size:10px}.map-caption{font-size:14px}.choice-grid.three{grid-template-columns:1fr}.choice-grid.three .choice{min-height:auto}.choice-grid.three .choice p{margin-bottom:9px}.choice-grid.three .choice .detail{margin-bottom:9px}}
+@media(max-width:600px){.app{padding:0 14px}.topbar{min-height:74px}.brand small{font-size:7px}.workbench{display:flex;flex-direction:column;gap:10px}.sidebar{padding-top:7px}.eyebrow{margin-bottom:15px;font-size:9px}h1{font-size:36px;margin-bottom:14px}.intro{max-width:none;font-size:14px}.contract-choices{margin:18px 0}.contract-card{padding:16px;gap:14px}.contract-card strong{font-size:15px}.contract-card small{font-size:12px}.contract-card em{font-size:11px;margin-top:8px}.contract-symbol{width:43px;height:44px}.session-label{margin-bottom:8px}.model-note{margin-bottom:10px;font-size:10px}.farm-panel{width:100%;margin-top:0}.scene{height:290px}.map-heading{font-size:9px}.map-footer p{max-width:65%;font-size:10px}.map-footer button{padding:9px 12px;min-height:40px}.map-caption{bottom:10px;left:10px;font-size:13px;padding:7px 10px}.page-footer{padding:16px 0;font-size:8px;gap:8px}.page-footer>span:nth-child(2){font-size:11px}.resource-bar{margin-bottom:15px;min-height:65px}.contract-pill{display:none}.resource{border-left:0;padding:0 10px}.resource strong{font-size:21px}.timer{padding:0 12px}.timer small{font-size:7px}.timer strong{font-size:20px}.product-resource{border-right:0}.resource-bar small{letter-spacing:.4px;font-size:7px}#mission h1{font-size:29px;margin-bottom:5px}#mission .eyebrow{margin-bottom:7px}.mission-prompt{font-size:12px;margin-bottom:11px}.step-list{display:flex;gap:6px;margin:16px 0}.step-list li{flex:1;display:flex;flex-direction:column;gap:6px;text-align:center;font-size:9px}.step-list i{width:22px;height:22px}.order-note{padding-top:11px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.order-note small{font-size:8px}.order-note p{font-size:11px;margin:0;flex:1;min-width:180px}.order-note .text-button{font-size:10px}.batch-note{margin:10px 0 0;padding:9px 12px;font-size:11px}.batch-note strong{display:inline;margin-left:5px}.batch-note p{margin:0;font-size:10px}.batch-note br{display:none}.dialog-head{margin-bottom:10px}dialog{padding:18px;width:calc(100% - 20px);max-height:calc(100dvh - 20px);border-radius:12px}h2{font-size:29px}.dialog-copy{font-size:12px}.choice-grid{grid-template-columns:1fr;margin:14px 0;gap:9px}.choice{min-height:auto;padding:14px}.choice.selected{padding:13px}.choice strong{font-size:14px;margin-bottom:6px}.choice p{font-size:11px;margin-bottom:8px}.choice .detail{margin:0 0 9px}.choice-grid.three .choice{padding:13px}.choice-grid.three .choice.selected{padding:12px}.dialog-actions{gap:8px;flex-wrap:wrap}.dialog-actions button{flex:1;font-size:12px;padding:12px}.decision-preview{font-size:11px;padding:11px;margin-bottom:14px}.result-metrics{grid-template-columns:repeat(2,1fr)}.result-metrics strong{font-size:22px}.explanations{font-size:12px}.question-box{font-size:14px}.ledger{font-size:9px}.ledger th,.ledger td{padding:6px 4px}.instruction-list{font-size:13px}main{padding-top:16px}}
+@media(max-height:520px) and (min-width:601px){.topbar{min-height:62px}.app{padding:0 17px}.resource-bar{margin-bottom:12px;min-height:59px}.workbench{grid-template-columns:245px 1fr;gap:20px}.scene{height:260px}.sidebar{padding-top:7px}main{padding-top:12px}#mission h1{font-size:29px}.step-list{gap:7px;margin:15px 0}.order-note{padding-top:10px}.batch-note{margin-top:10px}.map-heading{padding:10px}.page-footer{padding:13px 0}.course{display:none}.topbar>.icon-button{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app" data-mode="welcome">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Algae Farm início"><span class="brandmark" aria-hidden="true">✳</span><span>Algae Farm<small>UMA PEQUENA BIORREFINARIA</small></span></a>
+    <span class="course">ENGENHARIA BIOQUÍMICA <span>·</span> EEL / USP</span>
+    <button class="icon-button" id="help" aria-label="Como jogar">?</button>
+  </header>
+  <main>
+    <section class="resource-bar" id="resource-bar" hidden aria-label="Recursos da missão">
+      <div class="contract-pill"><span id="contract-icon">◒</span><div><small>SEU CONTRATO</small><strong id="contract-name"></strong></div></div>
+      <div class="resource"><small>ORÇAMENTO</small><strong><span id="credits">100</span><em> / 100</em></strong></div>
+      <div class="resource"><small>ENERGIA</small><strong><span id="energy">55</span><em> / 55</em></strong></div>
+      <div class="resource product-resource"><small>PRODUTO</small><strong><span id="product">0</span><em id="target"> / 18</em></strong></div>
+      <div class="timer"><small>TEMPO DE JOGO</small><strong id="timer">06:00</strong></div>
+    </section>
+    <div class="workbench">
+      <aside class="sidebar">
+        <section id="welcome">
+          <p class="eyebrow"><span class="status-dot"></span> MICROALGAS · BIOPRODUTOS</p>
+          <h1>Pequenas algas.<br>Grandes escolhas.</h1>
+          <p class="intro">Do cultivo ao produto: conduza uma encomenda pela fazenda e descubra o custo de cada decisão.</p>
+          <p class="session-label">6 minutos <span>·</span> Joguem em dupla</p>
+          <div class="contract-choices">
+            <button class="contract-card" data-contract="biodiesel"><span class="contract-symbol">◒</span><span><strong>Produzir biodiesel</strong><small>Biomassa, lipídios e conversão</small><em>Escolher encomenda <b>→</b></em></span></button>
+            <button class="contract-card" data-contract="material"><span class="contract-symbol material-symbol">▧</span><span><strong>Criar um bioplástico</strong><small>Biomassa integral ou amido</small><em>Escolher encomenda <b>→</b></em></span></button>
+          </div>
+          <p class="model-note">Simulação didática. As fichas representam regras do jogo, sem equivalência direta com kg, kWh ou desempenho industrial.</p>
+        </section>
+        <section id="mission" hidden>
+          <p class="eyebrow" id="step-number">ETAPA 01 / 04</p>
+          <h1 id="step-title">Cultivo</h1>
+          <p class="mission-prompt" id="step-prompt"></p>
+          <button class="primary full" id="go">Ir ao cultivo <span>↗</span></button>
+          <ol class="step-list" id="step-list"></ol>
+          <div class="order-note"><small>ENCOMENDA</small><p id="order-text"></p><button class="text-button" id="order-details">Ver processo e especificação →</button></div>
+          <div class="batch-note" id="batch-note"></div>
+        </section>
+      </aside>
+      <section class="farm-panel" aria-label="Fazenda de microalgas">
+        <div class="map-heading"><span><span class="live-dot"></span> ESTAÇÃO EXPERIMENTAL</span><span id="weather-label">☀ Céu aberto</span></div>
+        <div class="scene"><canvas id="farm" aria-label="Mapa da fazenda. Use o botão Ir à estação para navegar, ou as setas e a tecla E." tabindex="0"></canvas><div class="map-caption" id="map-caption">Cultivar é só o começo.</div></div>
+        <div class="map-footer"><p id="control-hint">Explore uma biorrefinaria de microalgas.</p><button class="secondary" id="interact" hidden>Interagir <span>E</span></button></div>
+      </section>
+    </div>
+    <footer class="page-footer"><span>ALGAE FARM <span class="version-label">· PROTÓTIPO 0.1</span></span><span>Produção, composição e recursos.</span><button class="text-button" id="restart" hidden>Recomeçar</button></footer>
+  </main>
+</div>
+<dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-head"><p class="eyebrow" id="dialog-label"></p><button class="icon-button" id="close-dialog" aria-label="Fechar">×</button></div><div id="dialog-body"></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module">const VERSION = '0.1.0';
+const PHASES = ['cultivation', 'weather', 'processing', 'recovery', 'delivery', 'results'];
+const CONTRACTS = {
+  biodiesel: {
+    name: 'Biodiesel', icon: '◒', target: 18, unit: 'fichas de biodiesel',
+    customer: 'Cooperativa de transporte',
+    brief: 'Transforme lipídios de microalgas em biodiesel para uma encomenda experimental.',
+    specification: 'Entregue 18 fichas de biodiesel. O óleo precisa passar por transesterificação.',
+    chain: 'Cultivo → colheita → extração de lipídios → transesterificação',
+    prompt: 'Uma maior fração lipídica sempre gera mais biodiesel por cultivo?'
+  },
+  material: {
+    name: 'Bioplástico', icon: '▧', target: 10, unit: 'placas didáticas',
+    customer: 'Oficina de materiais',
+    brief: 'Produza placas para demonstração com biomassa integral ou amido de microalgas.',
+    specification: 'Entregue 10 placas de demonstração. Cor verde é aceita; não há exigência de uso alimentício.',
+    chain: 'Cultivo → colheita → formulação integral ou recuperação de amido → moldagem',
+    prompt: 'Quando separar o amido compensa o processamento adicional?'
+  }
+};
+
+const STAGES = {
+  cultivation: {number: 1, name: 'Cultivo', station: 'cultivation', question: 'O que você quer acumular?', intro: 'Escolha entre produzir mais células ou favorecer o componente de interesse. Os perfis abaixo são hipóteses deste jogo.'},
+  weather: {number: 2, name: 'Energia', station: 'weather', question: 'O céu fechou. Como adaptar?', intro: 'A mesma frente nublada chega para todos após o cultivo. A produção responde à sua decisão; os turnos representam tempo de processo.'},
+  processing: {number: 3, name: 'Processamento', station: 'processing', question: 'Como transformar a biomassa?', intro: 'Confira a encomenda. Toda rota inclui colheita e as etapas necessárias para obter o produto indicado.'},
+  recovery: {number: 4, name: 'Recuperação', station: 'recovery', question: 'O que fazer com água e sólidos?', intro: 'A recuperação usa energia e orçamento. Neste cenário, o tratamento permite recuperar até 16 fichas de água para um próximo lote.'},
+  delivery: {number: 5, name: 'Entrega', station: 'delivery', question: 'Hora de comparar os resultados', intro: 'Leve o lote à expedição. Uma entrega incompleta também ajuda a entender o processo.'}
+};
+
+function createState(contract) {
+  if (!CONTRACTS[contract]) throw new Error('Contrato desconhecido');
+  return {version: VERSION, contract, phase: 'cultivation', credits: 100, energy: 55, water: 0, recoveredWater: 0, turns: 0, biomass: 0, lipid: 0, starch: 0, product: 0, residual: 0, recoveredSolids: false, history: [], reason: null};
+}
+
+function choicesFor(state) {
+  const target = state.contract === 'biodiesel' ? 'lipídios' : 'amido';
+  const options = {
+    cultivation: [
+      {id: 'growth', title: 'Priorizar crescimento', description: 'Mais biomassa, menor proporção do componente de interesse.', credits: 24, energy: 6, water: 32, turns: 6, detail: '100 UB · 22% lipídios · 28% amido'},
+      {id: 'storage', title: `Favorecer ${target}`, description: 'Duas etapas de cultivo: crescimento seguido de acúmulo. Menos biomassa neste cenário.', credits: 20, energy: 7, water: 24, turns: 7, detail: state.contract === 'biodiesel' ? '78 UB · 40% lipídios · 20% amido' : '78 UB · 18% lipídios · 50% amido'}
+    ],
+    weather: [
+      {id: 'sun', title: 'Aceitar menor produção', description: 'Mantenha a luz natural. O lote rende 80% da biomassa prevista.', credits: 0, energy: 0, water: 0, turns: 0, detail: '80% da biomassa · sem gasto adicional'},
+      {id: 'led', title: 'Acender LEDs', description: 'Mantenha a biomassa prevista, com maior consumo de energia.', credits: 16, energy: 18, water: 0, turns: 0, detail: '100% da biomassa · +18 de energia'},
+      {id: 'extend', title: 'Estender o cultivo', description: 'Recupere parte da produção usando tempo adicional e energia de operação.', credits: 6, energy: 4, water: 0, turns: 3, detail: '98% da biomassa · +3 turnos'}
+    ],
+    processing: state.contract === 'biodiesel' ? [
+      {id: 'standard', title: 'Extração moderada', description: 'Recupere 78% dos lipídios; converta 90% da fração recuperada em fichas de produto.', credits: 20, energy: 9, water: 8, turns: 2, detail: 'Colheita + extração + transesterificação'},
+      {id: 'intensive', title: 'Extração intensiva', description: 'Recupere 95% dos lipídios; converta 95% da fração recuperada. Consome mais recursos.', credits: 34, energy: 21, water: 12, turns: 3, detail: 'Colheita + extração + transesterificação'}
+    ] : [
+      {id: 'whole', title: 'Biomassa integral', description: 'Use 80% da biomassa na formulação. Cada placa usa 5 UB recuperadas e aditivos previstos no custo.', credits: 18, energy: 9, water: 6, turns: 2, detail: 'Placas verdes para demonstração; formulação e moldagem incluídas'},
+      {id: 'starch', title: 'Recuperar amido', description: 'Recupere 85% do amido. Cada placa usa 2 unidades de amido e plastificante previsto no custo.', credits: 30, energy: 17, water: 10, turns: 3, detail: 'Separação + plastificação + moldagem; cor uniforme não é garantida'}
+    ],
+    recovery: [
+      {id: 'treat', title: 'Tratar e encerrar', description: 'Faça o tratamento previsto no cenário, sem recuperar água para o próximo lote.', credits: 6, energy: 3, water: 0, turns: 1, detail: 'Sem recuperação · +1 turno'},
+      {id: 'water', title: 'Recuperar água', description: 'Trate e reserve até 16 fichas de água para o próximo lote.', credits: 10, energy: 6, water: 0, turns: 1, detail: 'Até 16 de água recuperada · +1 turno'},
+      {id: 'both', title: 'Água e sólidos', description: 'Recupere água e encaminhe os sólidos a um parceiro. O destino não gera crédito automático.', credits: 18, energy: 10, water: 0, turns: 2, detail: 'Água recuperada + sólidos encaminhados · +2 turnos'}
+    ]
+  };
+  return (options[state.phase] || []).map(option => ({...option, disabled: feasibility(state, option)}));
+}
+
+function feasibility(state, option) {
+  if (option.credits > state.credits) return 'Orçamento insuficiente';
+  if (option.energy > state.energy) return 'Energia insuficiente';
+  if (state.turns + option.turns + (state.phase === 'recovery' ? 0 : 1) > 14) return 'Não cabe na janela de 14 turnos, incluindo o tratamento mínimo';
+  return null;
+}
+
+function applyChoice(state, phase, id) {
+  if (phase !== state.phase) throw new Error('Esta decisão já foi aplicada ou ainda não está disponível');
+  const option = choicesFor(state).find(x => x.id === id);
+  if (!option) throw new Error('Escolha desconhecida');
+  if (option.disabled) throw new Error(option.disabled);
+  const next = structuredClone(state);
+  next.credits -= option.credits;
+  next.energy -= option.energy;
+  next.water += option.water;
+  next.turns += option.turns;
+  if (phase === 'cultivation') {
+    next.biomass = id === 'growth' ? 100 : 78;
+    next.lipid = id === 'growth' ? .22 : state.contract === 'biodiesel' ? .40 : .18;
+    next.starch = id === 'growth' ? .28 : state.contract === 'material' ? .50 : .20;
+  }
+  if (phase === 'weather') next.biomass = +(next.biomass * ({sun: .8, led: 1, extend: .98}[id])).toFixed(2);
+  if (phase === 'processing') {
+    const recovered = state.contract === 'biodiesel' ? state.biomass * state.lipid * (id === 'standard' ? .78 : .95)
+      : id === 'whole' ? state.biomass * .80 : state.biomass * state.starch * .85;
+    const product = state.contract === 'biodiesel' ? recovered * (id === 'standard' ? .90 : .95)
+      : recovered / (id === 'whole' ? 5 : 2);
+    next.product = Math.floor(product + 1e-9);
+    next.residual = +(state.biomass - recovered).toFixed(2);
+  }
+  if (phase === 'recovery') {
+    next.recoveredWater = id === 'treat' ? 0 : Math.min(16, next.water);
+    next.recoveredSolids = id === 'both';
+  }
+  next.history.push({phase, id, title: option.title, credits: option.credits, energy: option.energy, water: option.water, turns: option.turns});
+  next.phase = PHASES[PHASES.indexOf(phase) + 1];
+  return next;
+}
+
+function conclude(state, reason = 'delivered') {
+  if (state.phase === 'results') return state;
+  if (reason === 'delivered' && state.phase !== 'delivery') throw new Error('Complete as quatro decisões antes da entrega');
+  return {...structuredClone(state), phase: 'results', reason};
+}
+
+function outcome(state) {
+  const contract = CONTRACTS[state.contract];
+  const delivered = state.reason === 'delivered';
+  return {success: delivered && state.product >= contract.target, delivered: delivered ? state.product : 0,
+    shortfall: Math.max(0, contract.target - state.product), energyUsed: 55 - state.energy, creditsUsed: 100 - state.credits,
+    netWater: state.water - state.recoveredWater, contract};
+}
+
+function explain(state) {
+  const choice = phase => state.history.find(x => x.phase === phase)?.id;
+  const messages = [];
+  if (choice('cultivation') === 'storage') messages.push(`Você priorizou ${state.contract === 'biodiesel' ? 'lipídios' : 'amido'}: o lote começou com 78 UB, em vez de 100. A composição também entrou no cálculo do produto.`);
+  else if (choice('cultivation')) messages.push('Você priorizou 100 UB de biomassa. A fração do componente de interesse e a recuperação ainda limitaram o produto.');
+  if (choice('weather') === 'led') messages.push('Os LEDs preservaram a biomassa prevista e consumiram 18 fichas extras de energia.');
+  if (choice('weather') === 'sun') messages.push('Você evitou gasto extra na iluminação e aceitou 20% menos biomassa.');
+  if (choice('weather') === 'extend') messages.push('Você recuperou 98% da biomassa prevista usando 3 turnos e 4 fichas extras de energia.');
+  if (choice('processing') === 'intensive') messages.push('A extração intensiva aumentou a recuperação e a conversão, com maior consumo de recursos.');
+  if (choice('processing') === 'standard') messages.push('A rota moderada gastou menos recursos no processamento, mas recuperou uma fração menor dos lipídios.');
+  if (choice('processing') === 'whole') messages.push('A oficina aceitou placas verdes. A rota integral aproveitou a biomassa sem separar o amido; os aditivos estão incluídos no custo.');
+  if (choice('processing') === 'starch') messages.push('A separação do amido acrescentou etapas. O número de placas dependeu da fração de amido e da recuperação, sem garantir pureza ou cor.');
+  if (state.recoveredWater) messages.push('Foram recuperadas 16 fichas de água para o próximo lote. Essa reserva não apaga a água nova usada neste lote.');
+  if (state.reason !== 'delivered') messages.push('O lote não foi entregue. Seu relatório preserva as decisões e o produto obtido até aqui.');
+  return messages;
+}
+
+function restoreSave(raw) {
+  if (!raw || raw.version !== VERSION || !Array.isArray(raw.history) || raw.history.length > 4 || !Number.isFinite(raw.deadline)) throw new Error('Salvamento incompatível');
+  let state = createState(raw.contract);
+  for (const item of raw.history) state = applyChoice(state, item.phase, item.id);
+  if (raw.reason) {
+    if (!['delivered', 'timeout', 'ended'].includes(raw.reason)) throw new Error('Resultado inválido');
+    state = conclude(state, raw.reason);
+  }
+  return {state, deadline: raw.deadline};
+}
+
+
+const STATIONS = {
+  cultivation: {name: 'Cultivo', x: 4, y: 3, w: 9, h: 4, point: [8, 8], color: '#37654d'},
+  weather: {name: 'Energia', x: 19, y: 3, w: 7, h: 5, point: [22, 9], color: '#ab813d'},
+  processing: {name: 'Processamento', x: 22, y: 11, w: 7, h: 4, point: [25, 16], color: '#955b42'},
+  recovery: {name: 'Recuperação', x: 3, y: 11, w: 6, h: 4, point: [7, 16], color: '#447d84'},
+  delivery: {name: 'Expedição', x: 13, y: 14, w: 6, h: 3, point: [16, 18], color: '#a27537'}
+};
+
+const TILE = 32, COLS = 32, ROWS = 21;
+
+class FarmWorld {
+  constructor(canvas, onArrive) {
+    this.canvas = canvas; this.ctx = canvas.getContext('2d'); this.onArrive = onArrive;
+    this.avatar = {x: 16.5 * TILE, y: 18.5 * TILE, facing: 'down'};
+    this.path = []; this.active = 'cultivation'; this.phase = 'cultivation'; this.targetStation = null;
+    this.keys = new Set(); this.moving = false; this.last = 0; this.cloudy = false; this.led = false;
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.resizeObserver = new ResizeObserver(() => this.resize()); this.resizeObserver.observe(canvas);
+    canvas.addEventListener('pointerdown', event => this.pointer(event));
+    document.addEventListener('keydown', e => {
+      if (document.querySelector('dialog[open]') || /INPUT|TEXTAREA/.test(e.target.tagName) || !this.enabled) return;
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(e.key)) {this.keys.add(e.key); this.path = []; e.preventDefault();}
+      if (e.key === 'e' || e.key === 'Enter') this.interact();
+    });
+    document.addEventListener('keyup', e => this.keys.delete(e.key));
+    window.addEventListener('blur', () => this.keys.clear());
+    requestAnimationFrame(t => this.frame(t));
+  }
+  resize() {
+    const r = this.canvas.getBoundingClientRect();
+    this.width = r.width; this.height = r.height;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    this.canvas.width = Math.round(r.width * dpr); this.canvas.height = Math.round(r.height * dpr);
+    this.dpr = dpr; this.scale = r.width < 620 ? r.width / 570 : Math.min(1.25, r.width / 1024);
+  }
+  blocked(x, y) {
+    if (x < 1 || y < 1 || x >= 30 || y >= 20) return true;
+    return Object.values(STATIONS).some(s => x >= s.x && x < s.x + s.w && y >= s.y && y < s.y + s.h);
+  }
+  route(tx, ty) {
+    if (this.blocked(tx, ty)) return false;
+    const sx = Math.floor(this.avatar.x / TILE), sy = Math.floor(this.avatar.y / TILE);
+    const queue = [[sx, sy]], seen = new Map([[`${sx},${sy}`, null]]);
+    let found = false;
+    for (let i = 0; i < queue.length; i++) {
+      const [x, y] = queue[i];
+      if (x === tx && y === ty) {found = true; break;}
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + dx, ny = y + dy, key = `${nx},${ny}`;
+        if (!this.blocked(nx, ny) && !seen.has(key)) {seen.set(key, [x, y]); queue.push([nx, ny]);}
+      }
+    }
+    if (!found) return false;
+    const route = []; let p = [tx, ty];
+    while (p) {route.push({x: (p[0] + .5) * TILE, y: (p[1] + .5) * TILE}); p = seen.get(`${p[0]},${p[1]}`);}
+    this.path = route.reverse(); return true;
+  }
+  goTo(id) {if (!this.enabled) return; const s = STATIONS[id]; if (s) {this.targetStation = id; this.route(...s.point);}}
+  pointer(e) {
+    if (!this.enabled || document.querySelector('dialog[open]')) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const wx = (e.clientX - rect.left) / this.scale + this.camX, wy = (e.clientY - rect.top) / this.scale + this.camY;
+    const s = Object.entries(STATIONS).find(([, q]) => wx >= q.x * TILE && wx < (q.x + q.w) * TILE && wy >= q.y * TILE && wy < (q.y + q.h) * TILE);
+    if (s) this.goTo(s[0]); else {this.targetStation = null; this.route(Math.floor(wx / TILE), Math.floor(wy / TILE));}
+  }
+  interact() {
+    if (!this.enabled) return;
+    const near = Object.entries(STATIONS).find(([, s]) => Math.hypot(this.avatar.x - (s.point[0] + .5) * TILE, this.avatar.y - (s.point[1] + .5) * TILE) < 65);
+    if (near) this.onArrive(near[0]); else this.goTo(this.active);
+  }
+  frame(t) {
+    const dt = Math.min((t - this.last) / 1000 || 0, .05); this.last = t;
+    const paused = document.querySelector('dialog[open]');
+    this.moving = false;
+    if (this.enabled && !paused) {
+      if (this.path.length) {
+        const p = this.path[0], dx = p.x - this.avatar.x, dy = p.y - this.avatar.y, d = Math.hypot(dx, dy), step = dt * 165;
+        this.avatar.facing = Math.abs(dx) > Math.abs(dy) ? dx > 0 ? 'right' : 'left' : dy > 0 ? 'down' : 'up';
+        if (d <= step) {this.avatar.x = p.x; this.avatar.y = p.y; this.path.shift();}
+        else {this.avatar.x += dx / d * step; this.avatar.y += dy / d * step;}
+        this.moving = true;
+        if (!this.path.length && this.targetStation) {const target = this.targetStation; this.targetStation = null; this.onArrive(target);}
+      } else if (this.keys.size) {
+        const dx = +(this.keys.has('d') || this.keys.has('ArrowRight')) - +(this.keys.has('a') || this.keys.has('ArrowLeft'));
+        const dy = +(this.keys.has('s') || this.keys.has('ArrowDown')) - +(this.keys.has('w') || this.keys.has('ArrowUp'));
+        const len = Math.hypot(dx, dy) || 1, nx = this.avatar.x + dx / len * dt * 165, ny = this.avatar.y + dy / len * dt * 165;
+        if (!this.blocked(Math.floor(nx / TILE), Math.floor(this.avatar.y / TILE))) this.avatar.x = nx;
+        if (!this.blocked(Math.floor(this.avatar.x / TILE), Math.floor(ny / TILE))) this.avatar.y = ny;
+        this.avatar.facing = dx ? dx > 0 ? 'right' : 'left' : dy > 0 ? 'down' : 'up'; this.moving = !!(dx || dy);
+      }
+    }
+    this.draw(t); requestAnimationFrame(n => this.frame(n));
+  }
+  draw(t) {
+    const c = this.ctx, w = this.width || 1024, h = this.height || 560, scale = this.scale || 1;
+    this.camX = Math.max(0, Math.min(COLS * TILE - w / scale, this.avatar.x - w / scale / 2));
+    this.camY = Math.max(0, Math.min(ROWS * TILE - h / scale, this.avatar.y - h / scale / 2));
+    c.setTransform(this.dpr || 1, 0, 0, this.dpr || 1, 0, 0); c.clearRect(0, 0, w, h);
+    c.save(); c.scale(scale, scale); c.translate(-this.camX, -this.camY); c.imageSmoothingEnabled = false;
+    const rect = (x, y, ww, hh, color) => {c.fillStyle = color; c.fillRect(Math.round(x), Math.round(y), ww, hh);};
+    for (let y = 0; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
+      const path = [8, 9, 16, 18].includes(y) || [7, 16, 22, 25].includes(x);
+      rect(x * 32, y * 32, 32, 32, x >= 30 ? '#69aeb7' : path ? ((x + y) % 3 ? '#d8be82' : '#d2b77a') : ((x * 7 + y * 13) % 5 ? '#93ad66' : '#8ba35e'));
+      if (!path && x < 30 && !this.blocked(x, y) && (x * 3 + y * 7) % 7 === 0) {rect(x * 32 + 5, y * 32 + 22, 3, 5, '#78974f'); rect(x * 32 + 8, y * 32 + 19, 3, 8, '#78974f');}
+      if (x >= 30 && (x + y) % 2 === 0) rect(x * 32 + ((this.reduced ? 0 : t / 120) % 16), y * 32 + 14, 16, 3, '#a2ced0');
+    }
+    // Fence and small orchard frame the facility.
+    for (let x = 1; x < 30; x++) {rect(x * 32, 24, 4, 20, '#a28358'); rect(x * 32, 29, 32, 4, '#c2a677');}
+    for (const [x, y] of [[44, 87], [446, 72], [898, 68], [47, 250], [932, 300], [65, 577]]) {
+      rect(x + 12, y + 34, 12, 27, '#755b3e'); rect(x, y + 8, 40, 37, '#547d48'); rect(x + 7, y, 29, 45, '#648d4b'); rect(x + 4, y + 20, 8, 8, '#86a359');
+    }
+    for (const [id, s] of Object.entries(STATIONS)) {
+      const x = s.x * 32, y = s.y * 32, sw = s.w * 32, sh = s.h * 32;
+      rect(x + 5, y + 9, sw, sh, '#75894e');
+      if (id === 'cultivation') {
+        for (let row = 0; row < 2; row++) {
+          const py = y + row * 66;
+          rect(x, py, sw, 60, '#d0c79c'); rect(x + 6, py + 6, sw - 12, 47, '#487c58'); rect(x + 12, py + 11, sw - 24, 14, '#639665');
+          rect(x + 10, py + 29, sw - 20, 4, '#3e6d50'); rect(x + sw / 2 - 3, py + 6, 6, 47, '#c5b98a');
+          for (let a = 0; a < 6; a++) rect(x + 25 + a * 38, py + 37 + (this.reduced ? 0 : Math.sin(t / 450 + a) * 4), 4, 3, '#83b67a');
+        }
+      } else if (id === 'weather') {
+        rect(x, y + 20, sw, sh - 20, '#b0c0a0'); rect(x + 5, y + 28, sw - 10, sh - 35, '#668c72');
+        for (let k = 0; k < 5; k++) {rect(x + 10 + k * 43, y + 28, 5, sh - 38, '#dbe1bb'); rect(x + 15 + k * 43, y + 46, 29, 18, this.led ? '#f1d470' : '#90b19b');}
+        rect(x - 4, y + 14, sw + 8, 11, '#d5d7b1'); rect(x + 10, y + 3, sw - 20, 11, '#d5d7b1'); rect(x + 24, y - 6, sw - 48, 11, '#d5d7b1');
+        rect(x + sw / 2 - 17, y + sh - 46, 34, 46, '#416a57');
+      } else if (id === 'processing') {
+        rect(x, y + 26, sw, sh - 26, '#d1aa74'); rect(x - 9, y + 6, sw + 18, 37, '#985b43'); rect(x + 2, y - 5, sw - 4, 12, '#ac6b4d');
+        for (let k = 0; k < 3; k++) {rect(x + 10 + k * 64, y + 9, 51, 22, '#3c6271'); rect(x + 14 + k * 64, y + 12, 43, 4, '#74939b');}
+        rect(x + 26, y + 60, 42, 34, '#f1d9a6'); rect(x + 124, y + 54, 43, 74, '#765438');
+        if (['recovery', 'delivery', 'results'].includes(this.phase)) {rect(x + 178, y + 90, 24, 26, '#bb8c4f'); rect(x + 181, y + 95, 18, 4, '#e1c386');}
+      } else if (id === 'recovery') {
+        rect(x + 10, y + 12, 77, 98, '#7c9991'); rect(x + 5, y + 3, 87, 18, '#c5d0b4'); rect(x + 12, y + 33, 73, 9, '#a6c5be');
+        rect(x + 112, y + 36, 65, 74, '#85a89e'); rect(x + 108, y + 27, 73, 17, '#d0d8bd');
+        rect(x + 88, y + 76, 27, 10, '#d3cf9c'); rect(x + 44, y + 111, 12, 18, '#547c75');
+      } else {
+        rect(x + 8, y + 26, sw - 16, sh - 26, '#c5a475'); rect(x - 2, y + 10, sw + 4, 25, '#c4824d');
+        for (let k = 0; k < 6; k++) rect(x + k * 32, y + 10, 16, 25, '#edd0a0');
+        rect(x + 20, y + 58, sw - 40, 12, '#84603d'); rect(x + 24, y + 71, 9, 24, '#84603d'); rect(x + sw - 34, y + 71, 9, 24, '#84603d');
+      }
+      const active = id === this.active;
+      const signWidth = Math.max(102, s.name.length * 8 + 24);
+      rect(x + sw / 2 - signWidth / 2 + 2, y + sh + 14, signWidth, 27, '#58663b');
+      rect(x + sw / 2 - signWidth / 2, y + sh + 11, signWidth, 27, active ? '#f6dd94' : '#f1e5be');
+      c.fillStyle = '#324e3b'; c.font = 'bold 14px system-ui'; c.textAlign = 'center'; c.fillText(s.name, x + sw / 2, y + sh + 30);
+      if (active && this.enabled) {
+        const py = y - 22 - (this.reduced ? 0 : Math.sin(t / 250) * 4);
+        rect(x + sw / 2 - 9, py, 18, 12, '#f6dc81'); rect(x + sw / 2 - 5, py + 12, 10, 5, '#f6dc81'); rect(x + sw / 2 - 2, py + 17, 4, 4, '#f6dc81');
+      }
+    }
+    if (this.path.length) {const p = this.path.at(-1); rect(p.x - 5, p.y - 5, 10, 10, '#f5e8b2');}
+    const ax = Math.round(this.avatar.x), ay = Math.round(this.avatar.y), walk = this.moving && !this.reduced ? Math.sin(t / 90) * 3 : 0;
+    c.fillStyle = '#59664466'; c.beginPath(); c.ellipse(ax, ay + 6, 12, 5, 0, 0, 7); c.fill();
+    rect(ax - 7, ay - 9, 6, 15 + walk, '#3d4d54'); rect(ax + 1, ay - 9, 6, 15 - walk, '#3d4d54');
+    rect(ax - 11, ay - 28, 22, 23, '#eee8c8'); rect(ax - 3, ay - 25, 6, 18, '#4b8178'); rect(ax - 15, ay - 26 + walk, 5, 17, '#e3d8b9'); rect(ax + 10, ay - 26 - walk, 5, 17, '#e3d8b9');
+    rect(ax - 8, ay - 43, 16, 16, '#d4a878'); rect(ax - 10, ay - 47, 20, 10, '#574535'); rect(ax - 10, ay - 41, 4, 10, '#574535');
+    if (this.avatar.facing !== 'up') {rect(ax + (this.avatar.facing === 'left' ? -5 : 4), ay - 35, 2, 2, '#3d3d32');}
+    if (this.cloudy) {c.fillStyle = '#65778316'; c.fillRect(0, 0, 1024, 672);}
+    c.restore();
+  }
+}
+
+
+
+const $ = id => document.getElementById(id);
+const dialog = $('dialog'), body = $('dialog-body'), SAVE_KEY = 'algae-farm-classroom-v01';
+const format = value => new Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2}).format(value);
+const world = new FarmWorld($('farm'), station => stationReached(station));
+let state = null, deadline = 0, saveAvailable = true, toastTimer;
+
+function toast(message) {
+  $('toast').textContent = message; $('toast').classList.add('visible'); clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $('toast').classList.remove('visible'), 3800);
+}
+function modal(label, content) {
+  $('dialog-label').textContent = label; body.innerHTML = content;
+  if (!dialog.open) dialog.showModal();
+  dialog.scrollTop = 0;
+}
+function save() {
+  if (!state || !saveAvailable) return;
+  try {localStorage.setItem(SAVE_KEY, JSON.stringify({version: VERSION, contract: state.contract, history: state.history.map(({phase, id}) => ({phase, id})), deadline, reason: state.reason}));}
+  catch {saveAvailable = false; toast('Seu navegador não permite salvar. Mantenha esta página aberta até terminar.');}
+}
+function readSave() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (raw) {
+      try {const restored = restoreSave(JSON.parse(raw)); state = restored.state; deadline = restored.deadline; render();
+        if (state.phase === 'results') resultScreen(); else if (Date.now() >= deadline) finish('timeout'); else toast('Missão retomada. O tempo continua a partir do início original.');}
+      catch {localStorage.removeItem(SAVE_KEY); toast('O salvamento anterior não é compatível. Escolha uma nova encomenda.');}
+    }
+  } catch {saveAvailable = false;}
+}
+function reset() {
+  state = null; deadline = 0; world.enabled = false; world.path = []; world.targetStation = null; world.cloudy = false; world.led = false; world.phase = 'cultivation'; world.active = 'cultivation';
+  try {localStorage.removeItem(SAVE_KEY);} catch {saveAvailable = false;}
+  if (dialog.open) dialog.close(); render();
+}
+function offerContract(id) {
+  const contract = CONTRACTS[id];
+  modal('SUA ENCOMENDA', `<h2 id="dialog-title">${contract.name}</h2><p class="dialog-copy">${contract.brief}</p><div class="question-box">${contract.specification}</div><p class="dialog-copy"><strong>Processo:</strong> ${contract.chain}.</p><ol class="instruction-list"><li><strong>Visite quatro estações.</strong> Toque no mapa ou use o botão “Ir à estação”. No computador, use as setas ou WASD e a tecla E.</li><li><strong>Compare antes de confirmar.</strong> Os custos são mostrados em fichas; você tem 100 de orçamento, 55 de energia e 14 turnos de processo.</li><li><strong>Entregue e explique sua estratégia.</strong> O relógio de 6 minutos começa ao entrar na fazenda e continua durante a leitura e fora da aba.</li></ol><p class="model-note">UB = unidades de biomassa do jogo. As frações e rendimentos são hipóteses didáticas. Os turnos de processo são diferentes dos minutos de jogo.</p><div class="dialog-actions"><button class="secondary" id="back-contract">Voltar</button><button class="primary" id="start-mission">Entrar na fazenda →</button></div>`);
+  $('back-contract').onclick = () => dialog.close();
+  $('start-mission').onclick = () => {
+    $('start-mission').disabled = true;
+    state = createState(id); deadline = Date.now() + 6 * 60 * 1000;
+    world.avatar = {x: 16.5 * 32, y: 18.5 * 32, facing: 'up'};
+    dialog.close(); save(); render(); toast('Encomenda recebida. Vá ao cultivo para começar.');
+  };
+}
+function render() {
+  const playing = !!state;
+  $('app').dataset.mode = playing ? 'playing' : 'welcome';
+  $('welcome').hidden = playing; $('mission').hidden = !playing; $('resource-bar').hidden = !playing;
+  $('restart').hidden = !playing; $('interact').hidden = !playing;
+  if (!state) {$('map-caption').textContent = 'Cultivar é só o começo.'; $('weather-label').textContent = '☀ Céu aberto'; $('control-hint').textContent = 'Explore uma biorrefinaria de microalgas.'; return;}
+  const contract = CONTRACTS[state.contract], stage = STAGES[state.phase];
+  $('credits').textContent = state.credits; $('energy').textContent = state.energy; $('product').textContent = state.product; $('target').textContent = ` / ${contract.target}`;
+  $('contract-name').textContent = contract.name; $('contract-icon').textContent = contract.icon;
+  $('order-text').textContent = contract.specification;
+  $('step-number').textContent = state.phase === 'results' ? 'MISSÃO ENCERRADA' : state.phase === 'delivery' ? 'ETAPA FINAL' : `ETAPA 0${stage.number} / 04`;
+  $('step-title').textContent = state.phase === 'results' ? 'Seu resultado' : stage.name;
+  $('step-prompt').textContent = state.phase === 'results' ? 'Compare sua rota e os recursos usados. Qual decisão você mudaria?' : stage.question;
+  $('go').innerHTML = state.phase === 'results' ? 'Ver relatório <span>↗</span>' : `Ir à estação <span>↗</span>`;
+  $('step-list').innerHTML = Object.entries(STAGES).filter(([key]) => key !== 'delivery').map(([key, value]) => {
+    const done = state.history.some(h => h.phase === key), current = state.phase === key;
+    return `<li class="${done ? 'done' : current ? 'current' : ''}"><i>${done ? '✓' : value.number}</i>${value.name}</li>`;
+  }).join('');
+  const processingDone = state.history.some(x => x.phase === 'processing');
+  $('batch-note').innerHTML = state.history.length ? `<small>SEU LOTE</small><strong>${format(state.biomass)} UB ${processingDone ? 'processadas' : 'previstas'}</strong><p>${Math.round(state.lipid * 100)}% lipídios · ${Math.round(state.starch * 100)}% amido<br> ${state.turns}/14 turnos · ${state.water} de água nova${state.recoveredWater ? ` · ${state.recoveredWater} recuperadas` : ''}</p>` : '';
+  world.enabled = state.phase !== 'results'; world.phase = state.phase;
+  world.active = stage?.station || 'delivery';
+  world.cloudy = state.history.length >= 1;
+  world.led = state.history.some(x => x.id === 'led');
+  $('weather-label').textContent = world.cloudy ? world.led ? '☁ Nublado · LEDs ligados' : '☁ Céu nublado' : '☀ Céu aberto';
+  $('map-caption').textContent = state.phase === 'results' ? 'Cada escolha deixou um resultado.' : `Próxima parada: ${STATIONS[world.active].name}`;
+  $('control-hint').textContent = state.phase === 'results' ? 'Missão encerrada. Abra o relatório para comparar.' : 'Toque para caminhar · Toque em uma estação para visitá-la';
+  $('interact').disabled = state.phase === 'results';
+  updateTimer();
+}
+function updateTimer() {
+  if (!state) return;
+  const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+  $('timer').textContent = state.phase === 'results' ? 'FIM' : `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`;
+  $('timer').parentElement.classList.toggle('urgent', remaining < 60 && state.phase !== 'results');
+  if (!remaining && state.phase !== 'results') finish('timeout');
+}
+function stationReached(station) {
+  if (!state || state.phase === 'results') return;
+  if (Date.now() >= deadline) {finish('timeout'); return;}
+  if (station !== STAGES[state.phase]?.station) {
+    if (station === 'delivery') {showOrder(); return;}
+    const completed = state.history.find(h => STAGES[h.phase]?.station === station);
+    if (completed) toast(`${completed.title}: decisão já registrada, sem nova cobrança.`);
+    else toast(`Próxima parada: ${STATIONS[STAGES[state.phase].station].name}.`);
+    return;
+  }
+  if (state.phase === 'delivery') {
+    modal('EXPEDIÇÃO', `<h2 id="dialog-title">Seu lote está pronto.</h2><p class="dialog-copy">${CONTRACTS[state.contract].specification}</p><div class="question-box">Disponível: <strong>${state.product} ${CONTRACTS[state.contract].unit}</strong>.</div><p class="dialog-copy">A entrega encerra a missão. Se faltar produto, o relatório explica o resultado da sua rota.</p><div class="dialog-actions"><button class="secondary" id="back-delivery">Voltar ao mapa</button><button class="primary" id="deliver">Entregar e ver resultado →</button></div>`);
+    $('back-delivery').onclick = () => dialog.close(); $('deliver').onclick = () => finish('delivered'); return;
+  }
+  decisionScreen();
+}
+function decisionScreen() {
+  const phase = state.phase, stage = STAGES[phase], options = choicesFor(state);
+  let selected = null;
+  modal(`ETAPA 0${stage.number} / 04 · ${stage.name.toUpperCase()}`, `<h2 id="dialog-title">${stage.question}</h2><p class="dialog-copy">${stage.intro}</p><div class="choice-grid ${options.length === 3 ? 'three' : ''}">${options.map(option => `<button class="choice" data-choice="${option.id}" aria-pressed="false" ${option.disabled ? 'disabled' : ''}><strong>${option.title}</strong><p>${option.description}</p><span class="detail">${option.detail}</span><span class="chips"><span class="chip">${option.credits} orçamento</span><span class="chip">${option.energy} energia</span><span class="chip">${option.turns} turnos</span>${option.water ? `<span class="chip">${option.water} água</span>` : ''}</span>${option.disabled ? `<span class="disabled-reason">${option.disabled}</span>` : ''}</button>`).join('')}</div><div class="decision-preview" id="decision-preview" aria-live="polite">Selecione uma opção para conferir o resultado antes de confirmar.</div><div class="dialog-actions"><button class="secondary" id="back-map">Voltar ao mapa</button><button class="primary" id="confirm-choice" disabled>Confirmar decisão →</button></div>`);
+  body.querySelectorAll('[data-choice]').forEach(button => button.onclick = () => {
+    selected = button.dataset.choice;
+    body.querySelectorAll('[data-choice]').forEach(other => {const active = other === button; other.classList.toggle('selected', active); other.setAttribute('aria-pressed', String(active));});
+    const next = applyChoice(state, phase, selected);
+    $('decision-preview').innerHTML = `<strong>Após esta decisão:</strong> ${next.credits} de orçamento e ${next.energy} de energia restantes; ${next.turns}/14 turnos usados.${phase === 'cultivation' || phase === 'weather' ? `<br>Biomassa prevista: <strong>${format(next.biomass)} UB</strong>.` : ''}${phase === 'processing' ? `<br>Produto: <strong>${next.product} ${CONTRACTS[state.contract].unit}</strong> (meta: ${CONTRACTS[state.contract].target}).` : ''}${phase === 'recovery' ? `<br>Água nova usada: <strong>${next.water}</strong>; recuperada para o próximo lote: <strong>${next.recoveredWater}</strong>.` : ''}`;
+    $('confirm-choice').disabled = false;
+  });
+  $('back-map').onclick = () => dialog.close();
+  $('confirm-choice').onclick = () => {
+    if (!selected) return;
+    if (Date.now() >= deadline) {finish('timeout'); return;}
+    $('confirm-choice').disabled = true;
+    try {state = applyChoice(state, phase, selected); save(); dialog.close(); render(); toast(phase === 'cultivation' ? 'O céu fechou! Visite a estação de energia para adaptar o cultivo.' : 'Decisão registrada. Próxima estação indicada no mapa.');}
+    catch (error) {toast(error.message);}
+  };
+}
+function finish(reason) {
+  if (!state || state.phase === 'results') return;
+  if (reason === 'delivered' && Date.now() >= deadline) reason = 'timeout';
+  state = conclude(state, reason); world.path = []; world.targetStation = null; save(); render(); resultScreen();
+}
+function reportText() {
+  const o = outcome(state);
+  return `ALGAE FARM · ${o.contract.name}\n${o.success ? 'Contrato atendido' : 'Contrato incompleto'}\nProduzido: ${state.product}; entregue: ${o.delivered}; meta: ${o.contract.target} ${o.contract.unit}\nOrçamento usado: ${o.creditsUsed}/100\nEnergia usada: ${o.energyUsed}/55\nÁgua nova usada neste lote: ${state.water}\nÁgua recuperada para o próximo lote: ${state.recoveredWater}\nTurnos de processo: ${state.turns}/14\n\nDecisões:\n${state.history.map(h => `• ${h.title}`).join('\n')}\n\n${explain(state).join('\n')}\n\nPara discutir: ${o.contract.prompt}\n\nValores didáticos; sem equivalência direta com unidades industriais. Modelo ${VERSION}.`;
+}
+function resultScreen() {
+  if (!state) return;
+  const o = outcome(state), why = state.reason === 'timeout' ? 'O tempo terminou.' : state.reason === 'ended' ? 'Você encerrou a missão.' : o.success ? 'Sua rota atendeu à encomenda.' : 'O lote não atingiu a quantidade encomendada.';
+  modal('RELATÓRIO DO LOTE', `<span class="result-badge ${o.success ? '' : 'partial'}">${o.success ? '✓ CONTRATO ATENDIDO' : 'CONTRATO INCOMPLETO'}</span><h2 id="dialog-title">${o.contract.name}: suas escolhas contam.</h2><p class="dialog-copy">${why} Compare o produto com os recursos usados.</p><div class="result-metrics"><div><strong>${o.delivered}<small> / ${o.contract.target}</small></strong><small>${o.contract.unit} entregues</small></div><div><strong>${o.energyUsed}<small> / 55</small></strong><small>fichas de energia usadas</small></div><div><strong>${o.creditsUsed}<small> / 100</small></strong><small>fichas de orçamento usadas</small></div><div><strong>${state.water}</strong><small>fichas de água nova usadas</small></div><div><strong>${state.recoveredWater}</strong><small>água reservada para o próximo lote</small></div><div><strong>${state.turns}<small> / 14</small></strong><small>turnos de processo usados</small></div></div>${state.reason !== 'delivered' && state.product ? `<p class="dialog-copy">Foram produzidas ${state.product} unidades de produto, ainda sem entrega.</p>` : ''}<h3>O que sua rota mostrou</h3><ul class="explanations">${explain(state).map(x => `<li>${x}</li>`).join('') || '<li>A missão foi encerrada antes da primeira decisão.</li>'}</ul><div class="question-box">${o.contract.prompt}</div><details><summary>Ver registro das decisões</summary><table class="ledger"><thead><tr><th>Decisão</th><th>Orçam.</th><th>Energia</th><th>Água nova</th><th>Turnos</th></tr></thead><tbody>${state.history.map(h => `<tr><td>${h.title}</td><td>${h.credits}</td><td>${h.energy}</td><td>${h.water}</td><td>${h.turns}</td></tr>`).join('')}</tbody></table></details><p class="model-note">As quantidades são fichas didáticas. Biobaseado não significa biodegradável em qualquer ambiente. O jogo não calcula emissões nem certifica o combustível ou o material.</p><div id="copy-area"></div><div class="dialog-actions"><button class="secondary" id="copy-report">Copiar relatório</button><button class="primary" id="play-again">Escolher outro contrato →</button></div>`);
+  $('copy-report').onclick = async () => {
+    try {await navigator.clipboard.writeText(reportText()); toast('Relatório copiado.');}
+    catch {const area = document.createElement('textarea'); area.className = 'save-text'; area.setAttribute('aria-label', 'Relatório para copiar'); area.value = reportText(); $('copy-area').replaceChildren(area); area.focus(); area.select(); toast('Selecione e copie o relatório abaixo.');}
+  };
+  $('play-again').onclick = reset;
+}
+function showOrder() {
+  const contract = state ? CONTRACTS[state.contract] : null;
+  modal('PROCESSO E ENCOMENDA', `<h2 id="dialog-title">${contract?.name || 'Duas rotas para microalgas'}</h2><p class="dialog-copy">${contract?.specification || 'Escolha biodiesel ou biomaterial para começar.'}</p>${contract ? `<div class="question-box">${contract.chain}</div>` : ''}<p class="dialog-copy">O biodiesel precisa da conversão dos lipídios. Na rota de materiais, a biomassa integral participa de uma formulação; a rota de amido inclui recuperação e plastificação. Os aditivos e insumos de conversão estão agregados nos custos.</p><p class="model-note">As duas rotas têm escalas de fichas diferentes. Compare estratégias dentro de cada contrato; uma placa não equivale a uma ficha de biodiesel.</p><div class="dialog-actions"><button class="primary" id="close-order">Entendi</button></div>`);
+  $('close-order').onclick = () => dialog.close();
+}
+function help() {
+  modal('COMO JOGAR', `<h2 id="dialog-title">Explore. Compare. Decida.</h2><ol class="instruction-list"><li>O botão <strong>Ir à estação</strong> leva o personagem até a próxima decisão. Você também pode tocar na estação ou caminhar com as setas.</li><li>Leia os custos, escolha uma opção e confirme. Revisitar uma estação não cobra de novo.</li><li>Complete cultivo, energia, processamento e recuperação. Depois, visite a expedição.</li><li>O tempo de jogo é de <strong>6 minutos</strong>. A janela de <strong>14 turnos</strong> representa tempo de processo e limita algumas combinações.</li></ol><p class="dialog-copy">A missão fica salva neste navegador quando possível. O relógio continua se você sair da aba. Se o tempo terminar, seu relatório preserva o resultado parcial.</p><details><summary>Hipóteses e referências para a discussão</summary><p class="model-note">As frações de biomassa, os rendimentos, os custos e as propriedades aceitas são regras didáticas. Os perfis de acúmulo são específicos de cada contrato, sem representar uma única espécie universal.</p><p class="source-links"><a href="https://doi.org/10.3390/microorganisms10030566" target="_blank" rel="noopener">Cultivo e acúmulo de lipídios</a><br><a href="https://afdc.energy.gov/fuels/biodiesel-production" target="_blank" rel="noopener">Transesterificação e biodiesel</a><br><a href="https://doi.org/10.1021/acssuschemeng.3c04133" target="_blank" rel="noopener">Recuperação de amido de microalgas para filmes</a></p></details><div class="dialog-actions">${state && state.phase !== 'results' ? '<button class="secondary" id="end-early">Encerrar e ver parcial</button>' : ''}<button class="primary" id="close-help">Voltar</button></div>`);
+  $('close-help').onclick = () => dialog.close();
+  if ($('end-early')) $('end-early').onclick = () => finish('ended');
+}
+document.querySelectorAll('[data-contract]').forEach(button => button.onclick = () => offerContract(button.dataset.contract));
+$('close-dialog').onclick = () => dialog.close();
+$('help').onclick = help; $('order-details').onclick = showOrder;
+$('go').onclick = () => {if (!state) return; if (state.phase === 'results') resultScreen(); else world.goTo(STAGES[state.phase].station);};
+$('interact').onclick = () => world.interact();
+$('restart').onclick = () => {
+  if (state?.phase === 'results') {reset(); return;}
+  modal('RECOMEÇAR', '<h2 id="dialog-title">Começar uma nova missão?</h2><p class="dialog-copy">O lote atual será descartado deste navegador.</p><div class="dialog-actions"><button class="secondary" id="cancel-reset">Continuar missão</button><button class="primary" id="confirm-reset">Recomeçar</button></div>');
+  $('cancel-reset').onclick = () => dialog.close(); $('confirm-reset').onclick = reset;
+};
+document.querySelector('.brand').onclick = event => {event.preventDefault(); if (state) $('restart').click();};
+document.addEventListener('visibilitychange', updateTimer);
+setInterval(updateTimer, 500);
+readSave(); render();
+</script>
+</body>
+</html>
