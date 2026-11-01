@@ -1,17 +1,19 @@
 # Algae Farm
 
-Jogo didático em português para Engenharia Bioquímica: microalgas, biodiesel e bioplásticos.
+Jogo em português para Engenharia Bioquímica: microalgas, biodiesel e bioplásticos.
 
 Jogar: https://candidomolino.github.io/algae-farm/
 
-Versão do jogo: 0.2.0. Modelo didático: 0.1.0.
+Versão do jogo: 0.3.0. Modelo didático: 0.1.0.
 
-Uma missão de seis minutos combina exploração com quatro decisões de cultivo, energia, processamento e recuperação. No rodapé, Professor permite preparar links com contrato atribuído, seis ou dez minutos, ou ensaio sem relógio. Há uma alternativa para abrir as decisões sem caminhar.
+Uma missão de seis minutos combina exploração com quatro decisões de cultivo, energia, processamento e recuperação. O botão Professor prepara links com contrato atribuído, seis ou dez minutos, ou ensaio sem relógio. A alternativa Abrir decisão sem caminhar permite focar nas escolhas.
 
-Exemplo de ensaio: https://candidomolino.github.io/algae-farm/?minutos=livre&modo=direto
+O relatório explica o cálculo do produto, oferece duas perguntas com feedback e permite comparar duas entregas do mesmo contrato neste aparelho. Repetir a missão é opcional. As respostas não alteram a entrega e não geram uma nota acadêmica.
 
-O relatório pode ser copiado ou baixado como JSON, com escolhas, recursos e tempos de decisão. O jogo não solicita nomes ou identificação do aparelho e não envia esses dados a um servidor. O progresso fica no navegador quando o armazenamento local está disponível. A hospedagem pode registrar acessos ao site.
+Ensaio: https://candidomolino.github.io/algae-farm/?minutos=livre&modo=direto
 
-As quantidades são fichas didáticas, sem equivalência direta com kg, kWh ou litros. As unidades de produto dos dois contratos são diferentes. O jogo não calcula emissões nem certifica produtos. As regras e metas são iguais nas configurações de navegação e tempo.
+O resultado pode ser copiado ou baixado como JSON com escolhas, recursos, tempos e as respostas revisadas. O jogo não solicita nomes ou identificação do aparelho e não envia os resultados a um servidor. O progresso e as comparações ficam no navegador quando o armazenamento local está disponível. A hospedagem pode registrar acessos ao site.
 
-O arquivo index.html contém todo o código e os desenhos, sem bibliotecas externas. Preparado para revisão docente e piloto em aparelhos reais antes do uso em aula.
+Os valores são fichas didáticas, sem equivalência direta com kg, kWh ou litros. As unidades de produto dos contratos são diferentes. O jogo não calcula emissões nem certifica produtos. As regras numéricas e metas são iguais em todas as configurações de tempo e navegação.
+
+O arquivo index.html contém todo o código e os desenhos, sem dependências externas. Preparado para revisão docente e piloto em aparelhos reais antes da aplicação.
