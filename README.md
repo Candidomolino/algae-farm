@@ -1,17 +1,17 @@
 # Algae Farm
 
-A Portuguese browser game for a Biochemical Engineering class about microalgae, biodiesel, and whole-biomass or starch-based bioplastics.
+Jogo didático em português para explorar cultivo de microalgas, biodiesel e bioplásticos de amido ou biomassa integral.
 
-[Play Algae Farm](https://candidomolino.github.io/algae-farm/)
+[Jogar Algae Farm](https://candidomolino.github.io/algae-farm/)
 
-Version 0.6 adds a persistent farm: run batches, sell deliveries, earn farm coins and buy equipment between batches. Each of three upgrade types has three levels costing 20, 40 and 70 coins. Cultivation saves two budget tokens per level; processing saves one energy token per level; recovery capacity grows from 16 to 22 water tokens. Purchased equipment also appears in the farm scene.
+Versão 0.7.0 · modelo 0.4.0. Jogo livre, sem cronômetro por padrão. Venda lotes, ganhe moedas, melhore a fazenda e desbloqueie novas culturas:
 
-Each batch starts with 100 operating-budget tokens and 55 energy tokens. Farm coins and equipment persist in this browser. A batch keeps the equipment levels it started with. Delivery payments are recorded once, including after reload; below-target deliveries can still earn coins. There is no account, real money or automatic result upload.
+- Chlorella vulgaris: disponível desde o início.
+- Nannochloropsis gaditana: 2 lotes vendidos; perfil de lipídios, sem rota de amido.
+- Tetraselmis subcordiformis: 3 lotes vendidos e fazenda nível 3; perfil de biomassa e amido.
 
-Untimed free play remains the default. Students can explore, discover details, retry products and compare routes. Optional timed rounds use explicit minutos=6 or minutos=10 links. Three weather profiles and three operating conditions are revealed before affected choices. Shared scenario codes repeat those events; comparison reports also identify changes in equipment levels.
+A coleção mostra requisitos e rendimentos de referência antes de cada lote. Espécie, equipamentos, eventos e resultados ficam preservados no navegador. Os perfis numéricos são parâmetros fictícios de ensino, não rendimentos medidos ou desempenho industrial.
 
-[Fixed weather scenario](https://candidomolino.github.io/algae-farm/?cenario=fixo) with starter equipment reproduces the printed reference quantities. Model 0.3.0 restores earlier saves with starter equipment.
+O cenário fixo repete clima e operação: para reproduzir a referência original, use Chlorella com equipamentos no nível 0. Há eventos explicados, códigos compartilhados e três descobertas opcionais no mapa.
 
-[Download editable Piskel and Tiled art sources](https://candidomolino.github.io/algae-farm/Algae_Farm_Art_Source.zip). Terrain and small props: Kenney [Tiny Town](https://kenney.nl/assets/tiny-town) and [Tiny Farm](https://kenney.nl/assets/tiny-farm), CC0. The separate EEL/USP institutional logo comes from the [official library visual identity page](https://www.bibliotecas.eel.usp.br/servicos/identidade_visual). Other artwork is original to this project.
-
-All quantities, upgrade effects and coin payments are teaching conventions, not measured industrial performance or financial forecasts. Water recovery is a didactic reserve metric; an inter-batch water inventory is not simulated.
+[Fontes de arte e edição em Piskel/Tiled](Algae_Farm_Art_Source.zip). Arte Kenney Tiny Town e Tiny Farm sob CC0. O emblema institucional EEL/USP mantém sua referência própria no pacote.
