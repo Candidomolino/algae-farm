@@ -1,19 +1,15 @@
 # Algae Farm
 
-Jogo em português para Engenharia Bioquímica: microalgas, biodiesel e bioplásticos.
+A Portuguese browser game for a Biochemical Engineering class about microalgae, biodiesel, and whole-biomass or starch-based bioplastics.
 
-Jogar: https://candidomolino.github.io/algae-farm/
+[Play Algae Farm](https://candidomolino.github.io/algae-farm/)
 
-Versão do jogo: 0.3.0. Modelo didático: 0.1.0.
+Version 0.4 adds Kenney CC0 terrain, a researcher with four-direction walking animation, aerated algae raceways, drifting clouds, and greenhouse lighting that responds to the LED choice. The mobile layout puts the farm first. Model version 0.1.0 and teaching quantities are unchanged.
 
-Uma missão de seis minutos combina exploração com quatro decisões de cultivo, energia, processamento e recuperação. O botão Professor prepara links com contrato atribuído, seis ou dez minutos, ou ensaio sem relógio. A alternativa Abrir decisão sem caminhar permite focar nas escolhas.
+[Download editable Piskel and Tiled art sources](https://candidomolino.github.io/algae-farm/Algae_Farm_Art_Source.zip). The archive includes editing instructions and the original Kenney licenses. Custom sprites were constructed in code and the walk cycle imported and reviewed in Piskel. The layered map was exported and rendered with Tiled 1.12.2.
 
-O relatório explica o cálculo do produto, oferece duas perguntas com feedback e permite comparar duas entregas do mesmo contrato neste aparelho. Repetir a missão é opcional. As respostas não alteram a entrega e não geram uma nota acadêmica.
+Kenney sources: [Tiny Town](https://kenney.nl/assets/tiny-town) and [Tiny Farm](https://kenney.nl/assets/tiny-farm), CC0. Researcher, aerators, microalgae equipment, buildings and interface are original project artwork.
 
-Ensaio: https://candidomolino.github.io/algae-farm/?minutos=livre&modo=direto
+The game is self-contained in index.html and needs no account or external runtime services. Teacher controls support 6-minute and 10-minute missions, untimed rehearsal, assigned contracts and direct decisions. Reports include process calculations, two concept questions, and comparison with a previous delivery on the same device.
 
-O resultado pode ser copiado ou baixado como JSON com escolhas, recursos, tempos e as respostas revisadas. O jogo não solicita nomes ou identificação do aparelho e não envia os resultados a um servidor. O progresso e as comparações ficam no navegador quando o armazenamento local está disponível. A hospedagem pode registrar acessos ao site.
-
-Os valores são fichas didáticas, sem equivalência direta com kg, kWh ou litros. As unidades de produto dos contratos são diferentes. O jogo não calcula emissões nem certifica produtos. As regras numéricas e metas são iguais em todas as configurações de tempo e navegação.
-
-O arquivo index.html contém todo o código e os desenhos, sem dependências externas. Preparado para revisão docente e piloto em aparelhos reais antes da aplicação.
+All quantities are teaching tokens, not measured industrial performance. No emissions calculation or fuel/material certification is implied.

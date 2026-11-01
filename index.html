@@ -15,6 +15,8 @@
 @media(max-height:520px) and (min-width:601px){.topbar{min-height:62px}.app{padding:0 17px}.resource-bar{margin-bottom:12px;min-height:59px}.workbench{grid-template-columns:245px 1fr;gap:20px}.scene{height:260px}.sidebar{padding-top:7px}main{padding-top:12px}#mission h1{font-size:29px}.step-list{gap:7px;margin:15px 0}.order-note{padding-top:10px}.batch-note{margin-top:10px}.map-heading{padding:10px}.page-footer{padding:13px 0}.course{display:none}.topbar>.icon-button{margin-left:auto}}
 .activity-label{font-size:12px;background:#e7edda;border-left:3px solid #849b63;padding:9px 11px;line-height:1.5}.direct-decision{display:block;margin-top:10px;min-height:38px}.mission-progress{height:5px;background:#e0e6d5;border-radius:5px;overflow:hidden;margin-top:15px}.mission-progress span{display:block;height:100%;background:#698851;width:0;transition:width .2s}.teacher-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.teacher-fields label,.teacher-link-label{display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:600}.teacher-fields select,.teacher-link-label input{font:inherit;background:#fffdf5;color:var(--ink);border:1px solid #c9d2bc;border-radius:6px;padding:12px;min-height:46px;max-width:100%;width:100%}.teacher-link-label input{font-size:12px;font-weight:400}.dialog-actions{flex-wrap:wrap}#dialog-title:focus{outline:none}@media(max-width:600px){.teacher-fields{grid-template-columns:1fr}.page-footer{flex-wrap:wrap}.page-footer>span:nth-child(2){margin-left:0}.direct-decision{margin-top:6px;font-size:11px}.mission-progress{margin-top:8px}.step-list{margin:12px 0}}
 .learning-section{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin:18px 0}.learning-detail{border-bottom:1px solid var(--line);padding:3px 0 10px;margin-bottom:10px}.learning-detail summary{font-size:14px;font-weight:650;min-height:42px;line-height:1.5}.process-chain{font-size:14px;font-weight:600;background:#e9eddf;padding:13px;border-radius:6px;line-height:1.6}.factor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.factor-grid>div{background:#f0f0e3;padding:11px;border-radius:5px}.factor-grid small{display:block;font-size:10px;color:var(--muted)}.factor-grid strong{display:block;font-size:18px;margin-top:5px}.calculation-line{font-size:14px;line-height:1.8;background:#f5ecd3;padding:13px;border-left:3px solid var(--amber);overflow-wrap:anywhere}.route-comparison{font-size:11px;line-height:1.8}.comparison-table th:first-child{width:48%}.learning-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 5px}.knowledge-options{display:grid;gap:11px;margin:22px 0}.knowledge-option{padding:16px;border:1px solid #ccd6bd;border-radius:7px;background:#f1f2e5;text-align:left;color:var(--ink);font-size:14px;line-height:1.5;min-height:55px}.knowledge-option.selected{border:2px solid var(--green);background:#e4ecd4}.knowledge-option:disabled{opacity:.8}.knowledge-option.selected:disabled{opacity:1}.knowledge-feedback{background:#e5ecd7;border-left:3px solid var(--green);padding:14px 16px;font-size:13px;line-height:1.6}.knowledge-feedback p{margin:6px 0 0}.knowledge-feedback:focus{outline:2px solid #9aad81;outline-offset:3px}@media(max-width:600px){.factor-grid strong{font-size:16px}.factor-grid small{font-size:9px}.learning-actions button{flex:1;font-size:11px;padding:12px}.knowledge-option{font-size:13px}.calculation-line{font-size:12px}.comparison-table{font-size:10px}}
+.art-credit{font-size:9px;color:var(--muted);text-decoration:none;white-space:nowrap}.art-credit:hover{text-decoration:underline}.farm-panel{border-color:#b7c9ad;box-shadow:0 16px 40px #294b3e12}.map-heading{background:#f6f8ec}.map-caption{backdrop-filter:blur(6px)}
+@media(max-width:600px){.app[data-mode="playing"] .workbench{display:grid;grid-template-columns:1fr}.app[data-mode="playing"] .farm-panel{grid-row:1}.app[data-mode="playing"] .sidebar{grid-row:2}.app[data-mode="playing"] .scene{height:310px}.app[data-mode="playing"] .sidebar{padding-top:13px}.page-footer .art-credit{font-size:8px}.page-footer>span:nth-child(2){display:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -65,12 +67,15 @@
         <div class="map-footer"><p id="control-hint">Explore uma biorrefinaria de microalgas.</p><button class="secondary" id="interact" hidden>Interagir <span>E</span></button></div>
       </section>
     </div>
-    <footer class="page-footer"><span>ALGAE FARM <span class="version-label">· VERSÃO 0.3</span></span><span>Produção, composição e recursos.</span><button class="text-button" id="teacher">Professor</button><button class="text-button" id="restart" hidden>Recomeçar</button></footer>
+    <footer class="page-footer"><span>ALGAE FARM <span class="version-label">· VERSÃO 0.4</span></span><span>Produção, composição e recursos.</span><a class="art-credit" href="https://kenney.nl/assets/tiny-farm" target="_blank" rel="noopener">Arte: Kenney · CC0</a><button class="text-button" id="teacher">Professor</button><button class="text-button" id="restart" hidden>Recomeçar</button></footer>
   </main>
 </div>
 <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-head"><p class="eyebrow" id="dialog-label"></p><button class="icon-button" id="close-dialog" aria-label="Fechar">×</button></div><div id="dialog-body"></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="module">const VERSION = '0.1.0';
+<script type="module">const SCENE_MAP={"compressionlevel":-1,"height":21,"width":32,"infinite":false,"nextlayerid":9,"nextobjectid":69,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.12.2","tileheight":16,"tilewidth":16,"type":"map","version":"1.10","backgroundcolor":"#639a9b","properties":[{"name":"worldScale","type":"int","value":2},{"name":"notes","type":"string","value":"Kenney Tiny Town/Farm CC0 terrain. Station rectangles are collision footprints and drive runtime structure placement. Scenery is visual only. Arrival points drive routes."}],"layers":[{"id":1,"name":"Ground","type":"tilelayer","x":0,"y":0,"width":32,"height":21,"data":[2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,0,0,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,0,0,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,0,0,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,0,0,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,0,0,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,0,0,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,0,0,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,0,0,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,0,0,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,0,0,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,0,0,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,0,0,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,0,0,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,0,0,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,0,0,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,0,0,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,0,0,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,0,0,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,0,0,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,0,0],"opacity":1,"visible":true},{"id":2,"name":"Paths","type":"tilelayer","x":0,"y":0,"width":32,"height":21,"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,0,0,0,0,0,37,38,38,38,38,26,38,38,38,38,38,38,38,38,26,38,38,38,38,38,26,38,38,26,38,38,39,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,25,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,37,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,13,14,14,14,26,14,14,14,14,14,14,14,14,26,14,14,14,14,14,14,14,14,26,14,14,15,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,13,14,14,14,38,14,14,14,14,14,14,14,14,38,14,14,14,14,14,14,14,14,38,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"opacity":1,"visible":true},{"id":3,"name":"Ground details","type":"tilelayer","x":0,"y":0,"width":32,"height":21,"data":[3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"opacity":1,"visible":true},{"id":4,"name":"Scenery","type":"objectgroup","x":0,"y":0,"objects":[{"id":1,"name":"North fence","type":"decoration","gid":81,"x":16,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":2,"name":"North fence","type":"decoration","gid":82,"x":32,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":3,"name":"North fence","type":"decoration","gid":82,"x":48,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":4,"name":"North fence","type":"decoration","gid":82,"x":64,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":5,"name":"North fence","type":"decoration","gid":82,"x":80,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":6,"name":"North fence","type":"decoration","gid":82,"x":96,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":7,"name":"North fence","type":"decoration","gid":82,"x":112,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":8,"name":"North fence","type":"decoration","gid":82,"x":128,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":9,"name":"North fence","type":"decoration","gid":82,"x":144,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":10,"name":"North fence","type":"decoration","gid":82,"x":160,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":11,"name":"North fence","type":"decoration","gid":82,"x":176,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":12,"name":"North fence","type":"decoration","gid":82,"x":192,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":13,"name":"North fence","type":"decoration","gid":82,"x":208,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":14,"name":"North fence","type":"decoration","gid":82,"x":224,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":15,"name":"North fence","type":"decoration","gid":82,"x":240,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":16,"name":"North fence","type":"decoration","gid":82,"x":256,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":17,"name":"North fence","type":"decoration","gid":82,"x":272,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":18,"name":"North fence","type":"decoration","gid":82,"x":288,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":19,"name":"North fence","type":"decoration","gid":82,"x":304,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":20,"name":"North fence","type":"decoration","gid":82,"x":320,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":21,"name":"North fence","type":"decoration","gid":82,"x":336,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":22,"name":"North fence","type":"decoration","gid":82,"x":352,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":23,"name":"North fence","type":"decoration","gid":82,"x":368,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":24,"name":"North fence","type":"decoration","gid":82,"x":384,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":25,"name":"North fence","type":"decoration","gid":82,"x":400,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":26,"name":"North fence","type":"decoration","gid":82,"x":416,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":27,"name":"North fence","type":"decoration","gid":82,"x":432,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":28,"name":"North fence","type":"decoration","gid":82,"x":448,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":29,"name":"North fence","type":"decoration","gid":83,"x":464,"y":22,"width":16,"height":16,"rotation":0,"visible":true},{"id":30,"name":"Tree crown","type":"decoration","gid":5,"x":16,"y":48,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":64},{"name":"castShadow","type":"bool","value":false}]},{"id":31,"name":"Tree trunk","type":"decoration","gid":17,"x":16,"y":64,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":64}]},{"id":32,"name":"Tree crown","type":"decoration","gid":5,"x":448,"y":48,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":64},{"name":"castShadow","type":"bool","value":false}]},{"id":33,"name":"Tree trunk","type":"decoration","gid":17,"x":448,"y":64,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":64}]},{"id":34,"name":"Tree crown","type":"decoration","gid":5,"x":16,"y":144,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":160},{"name":"castShadow","type":"bool","value":false}]},{"id":35,"name":"Tree trunk","type":"decoration","gid":17,"x":16,"y":160,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":160}]},{"id":36,"name":"Tree crown","type":"decoration","gid":5,"x":16,"y":272,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":288},{"name":"castShadow","type":"bool","value":false}]},{"id":37,"name":"Tree trunk","type":"decoration","gid":17,"x":16,"y":288,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":288}]},{"id":38,"name":"Tree crown","type":"decoration","gid":5,"x":464,"y":304,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":320},{"name":"castShadow","type":"bool","value":false}]},{"id":39,"name":"Tree trunk","type":"decoration","gid":17,"x":464,"y":320,"width":16,"height":16,"rotation":0,"visible":true,"properties":[{"name":"footY","type":"int","value":320}]},{"id":40,"name":"Small tree","type":"decoration","gid":29,"x":224,"y":48,"width":16,"height":16,"rotation":0,"visible":true},{"id":41,"name":"Small tree","type":"decoration","gid":29,"x":464,"y":176,"width":16,"height":16,"rotation":0,"visible":true},{"id":42,"name":"Small tree","type":"decoration","gid":29,"x":176,"y":192,"width":16,"height":16,"rotation":0,"visible":true},{"id":43,"name":"Small tree","type":"decoration","gid":29,"x":320,"y":320,"width":16,"height":16,"rotation":0,"visible":true},{"id":44,"name":"Farm equipment","type":"decoration","gid":206,"x":208,"y":112,"width":16,"height":16,"rotation":0,"visible":true},{"id":45,"name":"Farm equipment","type":"decoration","gid":217,"x":288,"y":128,"width":16,"height":16,"rotation":0,"visible":true},{"id":46,"name":"Farm equipment","type":"decoration","gid":257,"x":144,"y":240,"width":16,"height":16,"rotation":0,"visible":true},{"id":47,"name":"Farm equipment","type":"decoration","gid":205,"x":336,"y":224,"width":16,"height":16,"rotation":0,"visible":true},{"id":48,"name":"Farm equipment","type":"decoration","gid":206,"x":432,"y":288,"width":16,"height":16,"rotation":0,"visible":true},{"id":49,"name":"Farm equipment","type":"decoration","gid":209,"x":192,"y":288,"width":16,"height":16,"rotation":0,"visible":true},{"id":50,"name":"Garden detail","type":"decoration","gid":30,"x":32,"y":80,"width":16,"height":16,"rotation":0,"visible":true},{"id":51,"name":"Garden detail","type":"decoration","gid":30,"x":192,"y":32,"width":16,"height":16,"rotation":0,"visible":true},{"id":52,"name":"Garden detail","type":"decoration","gid":108,"x":160,"y":208,"width":16,"height":16,"rotation":0,"visible":true},{"id":53,"name":"Garden detail","type":"decoration","gid":107,"x":432,"y":288,"width":16,"height":16,"rotation":0,"visible":true},{"id":54,"name":"Garden detail","type":"decoration","gid":44,"x":304,"y":160,"width":16,"height":16,"rotation":0,"visible":true}],"opacity":1,"visible":true,"color":"#ccac74","draworder":"topdown"},{"id":5,"name":"Stations","type":"objectgroup","x":0,"y":0,"objects":[{"id":55,"name":"Cultivo","type":"station","x":64,"y":48,"width":144,"height":64,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"cultivation"},{"name":"color","type":"color","value":"#37654d"}]},{"id":56,"name":"Energia","type":"station","x":304,"y":48,"width":112,"height":80,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"weather"},{"name":"color","type":"color","value":"#ab813d"}]},{"id":57,"name":"Processamento","type":"station","x":352,"y":176,"width":112,"height":64,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"processing"},{"name":"color","type":"color","value":"#955b42"}]},{"id":58,"name":"Recuperação","type":"station","x":48,"y":176,"width":96,"height":64,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"recovery"},{"name":"color","type":"color","value":"#447d84"}]},{"id":59,"name":"Expedição","type":"station","x":208,"y":224,"width":96,"height":48,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"delivery"},{"name":"color","type":"color","value":"#a27537"}]}],"opacity":1,"visible":true,"color":"#517d74","draworder":"topdown"},{"id":6,"name":"Interactions","type":"objectgroup","x":0,"y":0,"objects":[{"id":60,"name":"Cultivo: arrival","type":"arrival","x":136,"y":136,"point":true,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"cultivation"}]},{"id":61,"name":"Energia: arrival","type":"arrival","x":360,"y":152,"point":true,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"weather"}]},{"id":62,"name":"Processamento: arrival","type":"arrival","x":408,"y":264,"point":true,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"processing"}]},{"id":63,"name":"Recuperação: arrival","type":"arrival","x":120,"y":264,"point":true,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"recovery"}]},{"id":64,"name":"Expedição: arrival","type":"arrival","x":264,"y":296,"point":true,"rotation":0,"visible":true,"properties":[{"name":"stationId","type":"string","value":"delivery"}]}],"opacity":1,"visible":true,"color":"#dca74d","draworder":"topdown"},{"id":7,"name":"Boundary","type":"objectgroup","x":0,"y":0,"objects":[{"id":65,"name":"Farm boundary","type":"boundary","x":0,"y":0,"width":16,"height":336,"rotation":0,"visible":true},{"id":66,"name":"Farm boundary","type":"boundary","x":0,"y":0,"width":512,"height":16,"rotation":0,"visible":true},{"id":67,"name":"Farm boundary","type":"boundary","x":480,"y":0,"width":32,"height":336,"rotation":0,"visible":true},{"id":68,"name":"Farm boundary","type":"boundary","x":0,"y":320,"width":512,"height":16,"rotation":0,"visible":true}],"opacity":1,"visible":false,"color":"#b95f50","draworder":"topdown"}],"tilesets":[{"firstgid":1,"source":"tiny-town.tsj"},{"firstgid":133,"source":"tiny-farm.tsj"}]};
+const SCENE_TILESETS={"town":{"columns":12,"image":"../../assets/vendor/kenney-tiny-town/Tilemap/tilemap_packed.png","imageheight":176,"imagewidth":192,"margin":0,"name":"Kenney Tiny Town","spacing":0,"tilecount":132,"tiledversion":"1.12.2","tileheight":16,"tilewidth":16,"type":"tileset","version":"1.10"},"farm":{"columns":12,"image":"../../assets/vendor/kenney-tiny-farm/Tilemap/tilemap_packed.png","imageheight":176,"imagewidth":192,"margin":0,"name":"Kenney Tiny Farm","spacing":0,"tilecount":132,"tiledversion":"1.12.2","tileheight":16,"tilewidth":16,"type":"tileset","version":"1.10"}};
+const SCENE_ASSETS={"town":"data:image/png;base64,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","farm":"data:image/png;base64,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","researcher":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABgCAYAAACtxXToAAAIpUlEQVR4nO1cbWgUVxQ9KyqIqVo/UvCLmnahUqpEGo2VpSGWRINUQWjYuH8Si6CSNkQkSmuDNSWBYEBDqhXa/EmVBKz2g0aDgmVJTRpIaURiSU2gmIJrmibRGuiPvv5Y3zg7897Mfe+NdtvkwMLu7J537r1vdnb23HkDTGNqIyTauDWyjq1+bkHKtv67Y2iP9wo/HzTfFCr6rg1bI+uY1+B+SZjy+Ri6BVTVn+k34NMGT6D/7pjwvaD3ImEBTu4rwMJlmSnbRocTeOfjDtKgpnxTqOhL94AtNRdwtnQTAKCkudN6ToUJP4gCUvVnODfwXYwTBm8NWc8pu58p357A6HACo8MJbKm5QKUp6wsDyimIsJqNS1O2vX/9N/R0xEkJmPIHzh2yDmSDt4aQ9dIqAEA4Whe4vueAl6uLGQAUHm3VOvDo8k0LqKLv+grkFEQYezjA2MMBaxbYwwGWHYuynIKI509MEHwA6OmIh+xBFx5tDansfSr6M5zkKy1N1uuvl7+KBjxvvb7S0gRZEuOJPjae6NPm6yZgGr9VAB78vIw5wsGvNRxGXmUtGo8dQFf3RWkgJnyTCdDVl/4MTjyYtJ7/fKkW7/60xEvXmD+e6GOAfwKnjh0Ajh1guRt2hER8VX3XMQAAum/cRP/QoPWak681HMbexlbPRILgA+4E3mr6nMRT1RcWwIm2/bvQtn8X8iprAQB7G1uRHYuSDmg6/CAKSNUXfgU2vPJycgb6BlzvbXp9HQBg4M5IyvbE1bMAgHnbd2vx/RIA4Ergx5Zzwl8GFX2rADyB/qxc68P8Q/bZ8Au8+8ZNI75qAqb6nv8GR69/n3xStNHadmLtPeEBhZ+l2Y+wKnzTCeB82PgUfasA9tPMnaUlDIB15nVwdkYyqQULEP1iEsCvwiAAIHfDjpAJ3w6VAurqK/kBsu+cH95c+hcA4OAZOd90Auz83Fl3AQDnCfELC+AcgCcQl0Xvg/479wEAZUXr2Wff/uBbRJm+VwE5yorWM65HgasAogFME6BwgtIXve81gYGblGVF662DoEriTxLpGNM00gXS3cFpTav6+qZ8U1D1pY0RAHAOANB9fRM+H0O3gCr6nucBIm9eBbp8WXNDtS9A0Sf1BWLvtVA1A+Fz6BZQRV/6d9huS1fkh5WDMOGf3FeAlo9i1kMHVH1XAbgl7WwkjMyZS/oOmvI5dAuoqi8NiFvKQNKSBqBkS+vy7T0BjsFbQ8q2OFU/LfsCdi6gNwFUfeExgFvT/LWKpx8EH0gNuqcjTu4LBKJfWF1lefPck3e6rjLYeTp8ewKXq4vZ5epipaaKavyun0F75bgze6q82PLjVKDLX7jxNQBAQVUNAODQng9wpaUJ8zPXBK6fdhdImE6AnU8ByRbnVnR2LMpU7PCg+Kbw0ifvAVQ7+5cvPwUAvLh9txZfBHsCgJ41J9N3FUCWgE7gQfJNCujFI/UGVRCO1oXGE31Ml286AZyfubmE9HnXMSAcrQuVNHeif2jQegBJO5qKN2L7jfiA/gRwUPWFe0BPRzxUv2wFA4DEvT+U/fyVy1ag/nQbAOB889lQdizKqPxwtC6UUxBhjbYGB0+A0qHm9nhk21YGAJlLngUAafykg2DG2Bji37QrH3jON58NAcmDFg+IAtMJcGplzQqlxGOHsAD1ezYzIGltf4XZ1LhT4BQL//374+c+9rZTnzoBlvv7SItr7CwtYaLkAcGfIbuF7IRX0GVF69nq5c9Yrw+euSr8bGTbVuaVjK6+bjyuPcDEN6d0ZPxmMkjfXqVDNI2pCtJ6gf9rTwDwWC8wFXoCgMd5wFToCQA+J0J2S3p0OIFwvJeqb8w3nQCqvrQAFflhjA4nAOitFzDlA2YFpOoL1wuMzJmbso2TRZZ10HwOnoDOegEVfel6AQCwX7KuYm0Hwa/ZuNRaJ2AHZc2Ain5a9gVMC6iiL+0L2L0z9nBAuS9gwnf2AXQKaKKP8UQfy45FU7z1wuoq8gAivnMNACUB3hdQTcA0fmTHoqyr+yLjiyBUEzDlmyYg0pfxSbb400ZeZS1OlRdj4sGkZY1dqnpb2fO3Q8ZPKYDdN9e5LN2Ubwod/ZQTocwXViK8fDEAoPM7tbM+Pz53a71gP3DtbWzFtYbDgenL4DoTlNnPlAS8+BSYToCOPskUNbWoJx5MInNzCeZnrvG/QMJwAmT61uX0DggLcGLtPURvp16nX97cSb5AQcg/clwpaDtUJ0Ckv0jy2ZQCJG4nbefo7eTrg8c+sXx1SvJOvv3a/ZXLVqDHIAHKBDj160+3JW11yL1I6YDOxoLMVhZxnIK8CH5jODu3GWNjSvpOPQBWAZwxcfgWgF9qDsitZcBtZzvdXS9vPgh9J+x6XrEJB9T15r08/2SzI4n+O/d9eww6+jp6woOgrjfv5fmrePRB9AamewLToIHUFwCm4H2ERAMA9PsI6fL5GKb3EaLq/2f6Avw96l4USF/g30QQfQEKXIaI16XplMvWTfmmUNVPO0foaRfQVYDCo62uxgKQXHBAcWdN+aZQ1U/bvsDiyT9Tto3Mmfv07iPEXVW+rav7Iuvqvki+j5AJH0j+9W6P94Yq8sOoyA+jPd6rdB8hbf2cggiTefrcZvYahMLnwVAS4H0BagJG8XMPXdbQ4O/LEjDlmyZA1ZfeSEmEiQeT6L5xU9sTVOHzGznlVdai98yHrvdXr8oCAN8bOfnpO/kpBcirrFW2ooPkO6E6ATr6M4CkFcVXZOgsjTHlc+gW0ER/JvBkGyJOLBrscm1zJiD6CgSl74T1X8Dux3vtcqIEVPgiBN0QUdFP+TMksqOBx6/Ljxz3vNaHwpf9nptOgG78MwGxnw48tqK5Q9vTEQ+FO9y3IlHhS6PXTEBZv3STe9GUcxFSls1Xp8CP73cbHtMJcOqXPHKEnfcRAtzXGKXFfYT8ElDRn76P0PR9hNzwiukfZ0HiIbA3Z6wAAAAASUVORK5CYII=","aerator":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAQCAYAAADpunr5AAACmklEQVR4nO2WP2jbQBTGP5d2SMB4NZSCF9EsHmqwMhTRzS0dQgnOUIiXDEWFQDYPpmQKHpSpmyHgRYUMKSFkCCRbCBmqgDJoaMGLIATcra7AHtWhufPJupN0slw66AODLd9376f33v0Bcv2f+nG85ZPPomPtnZ9lHmPR/FkxF0R/sOCt3gA3F1fCsVE+oqR+onpDo/OYukKfr6z3U3Ekje+PB9Snvtuiz+fht0769HlhWQnM8zjODABttQgDmi+C2Ds/8z+9fhv6r60W6feqPk2IKIls0hx7yBuSSLL8Isnys/FZL08kZ49EZsce4tfP3zQRbbUYejEiXvIB4NnT5UiIKBGv7Bxp+EWq1spSscmWx65Y0RwkZ4EVwFau65YAFwBKAIBOZUSWkg+ElxLxkxfuuiUAT6j/sCb1Lvh4/eB1AWCCTmVEY4g6OY7f1BVAV3yA38X1huZ/7e4w/FO/LD/1uxPgeFfITwtQb2iBysGd4OWrv1GvL+3YbuB1F+snhTEsj5vEekPzW70Bs+xLAf/sWJ6f3Wu7H3YD/riVlAV/lF/Ezz0D0mq2gFmKNIBZKwcO9yw1L/9sA7ES8UcWgK2cYw/h2DswLC8xEOuv1srSB+ts58iK9d/dj3F3P07NP298kQIFIJVpq0V0KsEDxLFHUvBkzwOAZuczAOD5G8BgrnY8GZYH66SP5sNvsicDS7ExybUxS/7pHEuJVp5heTB1hZ4Z06bj84duQTcXVwUeqGF5sXfhVm+AlfV+YZ4tQhQj6dyL5E9yjZXlD21B2wf7PgAYR6cwmQ5a3VjD6saa/+3oNBKA9RM1haPFfiKSzDTxs+Bn59g+2E/o/56Yn1brxeZ7qTvy7ZfDQKVzfzp/aAvKlStXrn+nP4A3xsdKkp1lAAAAAElFTkSuQmCC"};
+const VERSION = '0.1.0';
 const PHASES = ['cultivation', 'weather', 'processing', 'recovery', 'delivery', 'results'];
 const CONTRACTS = {
   biodiesel: {
@@ -295,7 +300,7 @@ function compareAttempts(previous, current) {
 }
 
 
-const APP_VERSION = '0.3.0';
+const APP_VERSION = '0.4.0';
 
 function activityConfig(search = '') {
   const query = new URLSearchParams(search);
@@ -362,6 +367,310 @@ function sessionReport(state, run, now) {
 }
 
 
+// Art is authored at 16 px per tile and shown at 2x in the 32 px game world.
+// The embedded data comes directly from the editable Tiled map and tilesets.
+const WORLD_W = 1024, WORLD_H = 672;
+const INK = '#304f49', LIGHT = '#f1e3b3';
+
+function tileInfo(gid) {
+  if (!gid) return null;
+  const ref = [...SCENE_MAP.tilesets].reverse().find(t => gid >= t.firstgid);
+  if (!ref) return null;
+  const key = ref.source.includes('town') ? 'town' : 'farm';
+  const set = SCENE_TILESETS[key];
+  return {key, set, index: gid - ref.firstgid};
+}
+
+function tile(c, world, gid, x, y, width = 32, height = 32) {
+  const info = tileInfo(gid); if (!info) return;
+  const image = world.images[info.key]; if (!image?.naturalWidth) return;
+  const {set, index} = info, margin = set.margin || 0, gap = set.spacing || 0;
+  const sx = margin + index % set.columns * (set.tilewidth + gap);
+  const sy = margin + Math.floor(index / set.columns) * (set.tileheight + gap);
+  c.drawImage(image, sx, sy, set.tilewidth, set.tileheight, Math.round(x), Math.round(y), width, height);
+}
+
+function cacheSceneGround(world) {
+  const surface = document.createElement('canvas'); surface.width = WORLD_W; surface.height = WORLD_H;
+  const c = surface.getContext('2d'); c.imageSmoothingEnabled = false;
+  c.fillStyle = '#87a95e'; c.fillRect(0, 0, WORLD_W, WORLD_H);
+  // Tiny Town/Farm have no river tiles: this narrow channel is original art.
+  rect(c, 960, 0, 64, WORLD_H, '#61949b'); rect(c, 960, 0, 6, WORLD_H, '#477a76');
+  rect(c, 966, 0, 4, WORLD_H, '#8bb5aa');
+  for (const layer of SCENE_MAP.layers.filter(l => l.type === 'tilelayer' && l.visible !== false)) {
+    layer.data.forEach((gid, i) => tile(c, world, gid, i % layer.width * 32, Math.floor(i / layer.width) * 32));
+  }
+  world.ground = surface;
+}
+
+function rect(c, x, y, w, h, color) {
+  c.fillStyle = color; c.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+}
+
+function pixelPanel(c, x, y, w, h, color, corner = 4) {
+  rect(c, x + corner, y, w - corner * 2, h, color);
+  rect(c, x, y + corner, w, h - corner * 2, color);
+}
+
+function shadow(c, x, y, w, h = 14) {
+  pixelPanel(c, x + 6, y + 5, w, h, '#304f492c', 6);
+}
+
+function sprite(c, image, frame, row, fw, fh, x, y) {
+  if (!image?.naturalWidth) return;
+  c.drawImage(image, frame * fw, row * fh, fw, fh, Math.round(x), Math.round(y), fw * 2, fh * 2);
+}
+
+function pond(c, world, x, y, w, t, row) {
+  shadow(c, x, y + 50, w, 18);
+  pixelPanel(c, x, y, w, 60, '#6b7967', 8);
+  pixelPanel(c, x, y - 4, w, 58, '#c6c1a1', 8);
+  pixelPanel(c, x + 4, y, w - 8, 48, '#e0d9b6', 6);
+  pixelPanel(c, x + 10, y + 5, w - 20, 39, '#375f50', 5);
+  pixelPanel(c, x + 12, y + 9, w - 24, 32, '#4d865c', 4);
+  rect(c, x + 16, y + 9, w - 32, 5, '#74a067');
+  rect(c, x + 14, y + 37, w - 28, 4, '#30584d');
+  // A central island makes the raceway legible; the water moves around it.
+  pixelPanel(c, x + 46, y + 24, w - 92, 6, '#b0ad8b', 2);
+  rect(c, x + 52, y + 24, w - 104, 2, '#e6dfbd');
+  for (let i = 0; i < 9; i++) {
+    const drift = world.reduced ? 0 : (t / 95 + i * 17) % 28;
+    const xx = x + 18 + i * 27 + (row ? -drift / 3 : drift / 3);
+    const yy = y + (i % 2 ? 34 : 17);
+    rect(c, xx, yy, 7 + i % 3 * 2, 2, i % 3 ? '#72a974' : '#98bd82');
+  }
+  const frame = world.reduced ? 0 : Math.floor(t / 135) % 6;
+  for (const offset of [18, w - 46]) {
+    sprite(c, world.images.aerator, frame, 0, 16, 16, x + offset, y + 10);
+    for (let j = 0; j < 3; j++) {
+      const progress = world.reduced ? .4 : (t / 800 + j / 3 + row / 2) % 1;
+      const bx = x + offset + 17 + (j - 1) * 7, by = y + 30 - progress * 15;
+      rect(c, bx, by, 2, 2, progress > .75 ? '#80ac7c' : '#c3dba2');
+    }
+  }
+  for (let i = 0; i < w - 16; i += 24) rect(c, x + 9 + i, y + 49, 14, 2, '#a7a58a');
+}
+
+function cultivation(c, world, s, t) {
+  const x = s.x * 32, y = s.y * 32, w = s.w * 32;
+  // Feed and return pipes connect both ponds to the pump cabinet.
+  rect(c, x + w - 8, y + 28, 20, 70, '#526e62');
+  rect(c, x + w - 5, y + 26, 14, 70, '#bed0b0');
+  rect(c, x + w - 2, y + 26, 4, 70, '#e2e8c8');
+  pond(c, world, x, y, w, t, 0); pond(c, world, x, y + 66, w, t + 250, 1);
+  pixelPanel(c, x + w - 34, y + 123, 32, 22, '#526e62', 2);
+  rect(c, x + w - 30, y + 121, 24, 18, '#d2d7b4');
+  rect(c, x + w - 26, y + 125, 9, 6, '#426b65');
+  rect(c, x + w - 13, y + 126, 3, 3, '#91bf74');
+  rect(c, x + 8, y - 12, 47, 12, '#cfb57e');
+  rect(c, x + 12, y - 10, 39, 2, '#f0deb0');
+  c.fillStyle = INK; c.font = 'bold 8px system-ui'; c.textAlign = 'center'; c.fillText('RACEWAY', x + 31, y - 3);
+}
+
+function greenhouse(c, world, s) {
+  const x = s.x * 32, y = s.y * 32, w = s.w * 32, h = s.h * 32;
+  shadow(c, x - 3, y + h - 10, w + 6, 24);
+  pixelPanel(c, x, y + 31, w, h - 31, '#56786c', 4);
+  rect(c, x + 4, y + 39, w - 8, h - 51, '#638f7b');
+  // A stepped arched roof uses the same two-pixel edges as the sprite art.
+  for (let i = 0; i < 5; i++) {
+    rect(c, x + 4 + i * 6, y + 26 - i * 8, w - 8 - i * 12, 10, i < 2 ? '#aac5b0' : '#bdd0b6');
+  }
+  rect(c, x + 32, y - 10, w - 64, 6, '#e3e5c9');
+  rect(c, x - 4, y + 30, w + 8, 6, '#e1dfbd');
+  const light = world.led;
+  for (let i = 0; i < 5; i++) {
+    const px = x + 11 + i * 41;
+    rect(c, px, y + 43, 32, 88, '#497763');
+    rect(c, px + 3, y + 47, 26, 74, light ? '#b0ba72' : '#81ac91');
+    rect(c, px + 6, y + 54, 4, 56, light ? '#d6d797' : '#adccb0');
+    rect(c, px + 14, y + 82, 12, 29, '#467c59');
+    rect(c, px + 13, y + 79, 14, 5, '#90b077');
+    rect(c, px + 3, y + 48, 26, 3, light ? '#fff0a6' : '#b9d2b4');
+    if (light) {
+      rect(c, px + 1, y + 53, 30, 28, '#f3df7238');
+      rect(c, px + 3, y + 81, 26, 22, '#f3df721c');
+    }
+    rect(c, px - 6, y + 35, 5, h - 42, '#d9dfbe');
+    rect(c, px + 1, y + 123, 30, 5, '#b7c4a3');
+  }
+  rect(c, x + w - 6, y + 35, 5, h - 42, '#d9dfbe');
+  rect(c, x - 1, y + h - 13, w + 2, 9, '#aaa98c');
+  rect(c, x + w / 2 - 17, y + h - 41, 34, 37, '#365d51');
+  rect(c, x + w / 2 - 12, y + h - 37, 24, 28, '#8bb49a');
+  rect(c, x + w / 2 + 7, y + h - 25, 3, 4, '#e9d49a');
+  rect(c, x + w / 2 - 22, y + h - 4, 44, 5, '#ded5b0');
+}
+
+function processing(c, world, s) {
+  const x = s.x * 32, y = s.y * 32, w = s.w * 32, h = s.h * 32;
+  shadow(c, x - 8, y + h - 7, w + 13, 22);
+  pixelPanel(c, x, y + 29, w, h - 29, '#b99c72', 4);
+  rect(c, x + 4, y + 37, w - 8, h - 45, '#e0c28e');
+  rect(c, x + 3, y + h - 14, w - 6, 9, '#b29269');
+  for (let yy = y + 49; yy < y + h - 15; yy += 18) {
+    rect(c, x + 5, yy, w - 10, 2, '#d0b180');
+    for (let xx = x + 12 + (yy % 36 ? 0 : 12); xx < x + w; xx += 36) rect(c, xx, yy - 14, 2, 14, '#d0b180');
+  }
+  rect(c, x - 8, y + 2, w + 16, 43, '#715748');
+  rect(c, x - 6, y - 4, w + 12, 42, '#a36b4e');
+  rect(c, x + 4, y - 12, w - 8, 10, '#be845b');
+  for (let yy = 0; yy < 3; yy++) {
+    rect(c, x - 2, y + yy * 12, w + 4, 2, '#c28b60');
+    for (let xx = 0; xx < 7; xx++) rect(c, x + 10 + xx * 31 + yy % 2 * 12, y + yy * 12 + 2, 2, 9, '#925d48');
+  }
+  for (let i = 0; i < 3; i++) {
+    const px = x + 13 + i * 60;
+    rect(c, px, y + 2, 51, 28, '#304f54'); rect(c, px + 3, y + 5, 45, 21, '#416f7a');
+    for (let n = 1; n < 3; n++) rect(c, px + 3 + n * 15, y + 5, 1, 21, '#91b2b0');
+    rect(c, px + 3, y + 15, 45, 1, '#91b2b0');
+  }
+  rect(c, x + 20, y + 58, 46, 39, '#856f53'); rect(c, x + 23, y + 61, 40, 30, '#638c88');
+  rect(c, x + 28, y + 64, 30, 3, '#b7d3bc'); rect(c, x + 42, y + 61, 3, 30, '#d1c19b');
+  rect(c, x + 119, y + 60, 44, 68, '#6e6750'); rect(c, x + 123, y + 64, 36, 61, '#967a54');
+  rect(c, x + 125, y + 70, 2, 48, '#b69968'); rect(c, x + 151, y + 93, 3, 5, '#e0d5a6');
+  // Small pressure vessel and pipe by the workshop door.
+  pixelPanel(c, x + 183, y + 58, 29, 52, '#72958b', 5);
+  rect(c, x + 187, y + 62, 6, 38, '#b8c9ad'); rect(c, x + 182, y + 62, 31, 5, '#d2d6b5');
+  rect(c, x + 192, y + 52, 9, 7, '#bdc4a1'); rect(c, x + 201, y + 83, 15, 6, '#cad0ad');
+  if (['recovery', 'delivery', 'results'].includes(world.phase)) crate(c, x + 72, y + h - 22, true);
+}
+
+function tank(c, x, y, w, h, t, reduced) {
+  shadow(c, x, y + h - 5, w, 15);
+  pixelPanel(c, x, y + 5, w, h - 5, '#4d776e', 6);
+  rect(c, x + 5, y + 11, w - 12, h - 16, '#7a9c8c'); rect(c, x + 9, y + 13, 8, h - 20, '#a5bd9f');
+  pixelPanel(c, x - 3, y, w + 6, 15, '#c2ccb0', 5); rect(c, x + 5, y + 3, w - 10, 3, '#e6e4c6');
+  rect(c, x + 1, y + h - 18, w - 2, 6, '#b8c4a6');
+  rect(c, x + w / 2 - 4, y + 28, 13, h - 56, '#365e59');
+  rect(c, x + w / 2 - 1, y + 32, 7, h - 64, '#7eb7ac');
+  const offset = reduced ? 0 : Math.floor(t / 240) % 3 * 3;
+  for (let i = 0; i < 3; i++) rect(c, x + w / 2 + 1, y + 36 + i * 8 - offset, 2, 2, '#d1dfbe');
+}
+
+function recovery(c, world, s, t) {
+  const x = s.x * 32, y = s.y * 32;
+  rect(c, x + 38, y + 91, 101, 12, '#4d776e'); rect(c, x + 38, y + 91, 101, 5, '#cfcead');
+  rect(c, x + 130, y + 80, 10, 45, '#638578'); rect(c, x + 130, y + 80, 4, 45, '#cbd0ad');
+  tank(c, x + 8, y + 6, 77, 106, t, world.reduced); tank(c, x + 115, y + 34, 65, 78, t + 180, world.reduced);
+  rect(c, x + 41, y + 111, 12, 14, '#738b73'); rect(c, x + 38, y + 120, 18, 5, '#bbc4a1');
+  rect(c, x + 94, y + 89, 4, 14, '#335e55'); rect(c, x + 88, y + 93, 16, 5, '#d3a06a');
+}
+
+function crate(c, x, y, product = false) {
+  rect(c, x, y, 28, 24, '#8b6b43'); rect(c, x + 2, y, 24, 20, '#ba9159');
+  rect(c, x + 3, y + 3, 22, 3, '#e0b771'); rect(c, x + 3, y + 13, 22, 3, '#e0b771');
+  rect(c, x + 4, y + 3, 3, 15, '#8c6b43'); rect(c, x + 21, y + 3, 3, 15, '#8c6b43');
+  if (product) {rect(c, x + 10, y - 3, 9, 10, '#6c9768'); rect(c, x + 12, y - 6, 5, 4, '#d6dab6');}
+}
+
+function delivery(c, s) {
+  const x = s.x * 32, y = s.y * 32, w = s.w * 32;
+  shadow(c, x, y + 86, w, 18);
+  rect(c, x + 6, y + 24, w - 12, 65, '#c9af7f');
+  rect(c, x + 12, y + 36, w - 24, 42, '#628475');
+  rect(c, x + 12, y + 30, 7, 61, '#b18a56'); rect(c, x + w - 19, y + 30, 7, 61, '#b18a56');
+  rect(c, x - 6, y + 14, w + 12, 24, '#806548');
+  for (let i = 0; i < 12; i++) {
+    const xx = x - 5 + i * 17;
+    rect(c, xx, y + 8, 17, 24, i % 2 ? '#cf8c52' : '#eee0ab');
+    rect(c, xx, y + 29, 17, 8, i % 2 ? '#b77649' : '#cbbc8d');
+  }
+  rect(c, x + 10, y + 70, w - 20, 13, '#8e6b44'); rect(c, x + 12, y + 68, w - 24, 5, '#d1b27b');
+  crate(c, x + 22, y + 49, true); crate(c, x + 54, y + 47, true);
+  rect(c, x + 118, y + 48, 16, 18, '#e0d8b3'); rect(c, x + 121, y + 51, 10, 10, '#71a376');
+  rect(c, x + 146, y + 52, 12, 14, '#c5caa6'); rect(c, x + 149, y + 49, 6, 4, '#6d8f78');
+  rect(c, x + 16, y + 84, 7, 12, '#756344'); rect(c, x + w - 24, y + 84, 7, 12, '#756344');
+}
+
+function stationLabel(c, world, id, s, t) {
+  const x = (s.x + s.w / 2) * 32, y = s.y * 32 - 40;
+  const active = id === world.active, width = Math.max(96, s.name.length * 7 + 24);
+  pixelPanel(c, x - width / 2 + 2, y + 3, width, 24, '#3f5b4438', 3);
+  pixelPanel(c, x - width / 2, y, width, 24, active ? '#f5dda2' : '#e9e2bf', 3);
+  rect(c, x - width / 2 + 6, y + 4, 3, 16, active ? '#b88346' : '#8b9d78');
+  c.fillStyle = INK; c.font = '600 12px system-ui'; c.textAlign = 'center'; c.fillText(s.name, x + 3, y + 16);
+  if (active && world.enabled) {
+    const px = (s.point[0] + .5) * 32, py = (s.point[1] + .5) * 32;
+    const lift = world.reduced ? 0 : Math.round(Math.sin(t / 320) * 3);
+    rect(c, px - 12, py + 3, 24, 2, '#f9e6ae'); rect(c, px - 15, py - 1, 2, 7, '#f9e6ae'); rect(c, px + 13, py - 1, 2, 7, '#f9e6ae');
+    const by = y + 2 + lift, bx = x - width / 2 - 17;
+    pixelPanel(c, bx - 10, by, 20, 20, '#365d50', 3);
+    rect(c, bx - 3, by + 4, 6, 7, '#ffe5a0'); rect(c, bx - 6, by + 11, 12, 3, '#ffe5a0'); rect(c, bx - 3, by + 14, 6, 3, '#ffe5a0');
+  }
+}
+
+function atmosphere(c, world, t) {
+  const mix = world.reduced ? +world.cloudy : world.weatherMix;
+  if (!mix) return;
+  rect(c, 0, 0, WORLD_W, WORLD_H, `rgba(66,85,98,${mix * .13})`);
+  // Broad cloud shadows drift over the fields without hiding the controls.
+  for (let i = 0; i < 3; i++) {
+    const x = world.reduced ? i * 360 - 60 : (t / 48 + i * 410) % 1450 - 280;
+    const y = 46 + i * 172;
+    pixelPanel(c, x, y + 30, 230, 54, `rgba(43,65,70,${mix * .09})`, 18);
+    pixelPanel(c, x + 34, y + 14, 154, 68, `rgba(43,65,70,${mix * .05})`, 16);
+  }
+  // Clouds stay near the northern edge; the greenhouses remain readable.
+  c.globalAlpha = mix * .86;
+  for (let i = 0; i < 3; i++) {
+    const x = world.reduced ? i * 400 : (t / 90 + i * 400) % 1350 - 170;
+    const y = 2 + i % 2 * 18;
+    pixelPanel(c, x, y + 12, 125, 25, '#bac7bd', 8);
+    pixelPanel(c, x + 8, y + 4, 105, 25, '#e2e4cd', 9);
+    pixelPanel(c, x + 32, y - 4, 51, 21, '#edecda', 8);
+  }
+  c.globalAlpha = 1;
+}
+
+function drawFarmScene(world, t) {
+  const c = world.ctx, w = world.width || WORLD_W, h = world.height || 560, scale = world.scale || 1;
+  world.camX = Math.round(Math.max(0, Math.min(Math.max(0, WORLD_W - w / scale), world.avatar.x - w / scale / 2)));
+  world.camY = Math.round(Math.max(0, Math.min(Math.max(0, WORLD_H - h / scale), world.avatar.y - h / scale / 2)));
+  c.setTransform(world.dpr || 1, 0, 0, world.dpr || 1, 0, 0); c.clearRect(0, 0, w, h);
+  c.fillStyle = '#86a65e'; c.fillRect(0, 0, w, h);
+  if (!world.artReady) {c.fillStyle = INK; c.font = '14px system-ui'; c.textAlign = 'center'; c.fillText('Preparando a fazenda…', w / 2, h / 2); return;}
+  c.save(); c.imageSmoothingEnabled = false; c.scale(scale, scale); c.translate(-world.camX, -world.camY);
+  if (world.ground) c.drawImage(world.ground, 0, 0);
+  const clock = world.reduced ? 0 : t;
+  // River shimmer is an original overlay beside the Kenney terrain.
+  for (let i = 0; i < 16; i++) rect(c, 965 + i % 2 * 28 + (clock / 160 + i * 5) % 9, 17 + i * 42, 13, 2, '#c4d7c077');
+  if (world.path.length) {
+    c.globalAlpha = .6;
+    for (let i = 1; i < world.path.length; i += 2) {const p = world.path[i]; rect(c, p.x - 2, p.y - 1, 4, 3, '#f9efc8');}
+    c.globalAlpha = 1;
+  }
+  const things = [];
+  for (const layer of SCENE_MAP.layers.filter(l => l.type === 'objectgroup' && l.name === 'Scenery')) {
+    for (const o of layer.objects) if (o.gid) {
+      const properties = Object.fromEntries((o.properties || []).map(p => [p.name, p.value]));
+      things.push({depth: (properties.footY ?? o.y) * 2, draw: () => {
+        if (properties.castShadow !== false) shadow(c, o.x * 2, o.y * 2 - 9, o.width * 2, 12);
+        tile(c, world, o.gid, o.x * 2, (o.y - o.height) * 2, o.width * 2, o.height * 2);
+      }});
+    }
+  }
+  for (const [id, s] of Object.entries(STATIONS)) things.push({depth: (s.y + s.h) * 32, draw: () => {
+    if (id === 'cultivation') cultivation(c, world, s, clock);
+    else if (id === 'weather') greenhouse(c, world, s);
+    else if (id === 'processing') processing(c, world, s);
+    else if (id === 'recovery') recovery(c, world, s, clock);
+    else delivery(c, s);
+  }});
+  things.push({depth: world.avatar.y, draw: () => {
+    const x = Math.round(world.avatar.x), y = Math.round(world.avatar.y);
+    shadow(c, x - 15, y - 8, 24, 8);
+    const frame = world.moving && !world.reduced ? Math.floor(world.walkTime * 8) % 4 : 0;
+    const row = {down: 0, left: 1, right: 2, up: 3}[world.avatar.facing] ?? 0;
+    sprite(c, world.images.researcher, frame, row, 16, 24, x - 16, y - 46);
+  }});
+  things.sort((a, b) => a.depth - b.depth).forEach(o => o.draw());
+  atmosphere(c, world, clock);
+  for (const [id, s] of Object.entries(STATIONS)) stationLabel(c, world, id, s, clock);
+  c.restore();
+}
+
+
 const STATIONS = {
   cultivation: {name: 'Cultivo', x: 4, y: 3, w: 9, h: 4, point: [8, 8], color: '#37654d'},
   weather: {name: 'Energia', x: 19, y: 3, w: 7, h: 5, point: [22, 9], color: '#ab813d'},
@@ -370,15 +679,35 @@ const STATIONS = {
   delivery: {name: 'Expedição', x: 13, y: 14, w: 6, h: 3, point: [16, 18], color: '#a27537'}
 };
 
+// Tiled is the source of station footprints and route destinations. Keep the
+// named defaults above as a readable reference and for isolated module use.
+if (typeof SCENE_MAP !== 'undefined') {
+  const properties = object => Object.fromEntries((object.properties || []).map(p => [p.name, p.value]));
+  for (const layer of SCENE_MAP.layers.filter(l => l.type === 'objectgroup')) {
+    for (const object of layer.objects) {
+      const p = properties(object), s = STATIONS[p.stationId]; if (!s) continue;
+      if (layer.name === 'Stations') Object.assign(s, {name:object.name, x:object.x/16, y:object.y/16, w:object.width/16, h:object.height/16, color:p.color || s.color});
+      if (layer.name === 'Interactions') s.point = [object.x/16-.5, object.y/16-.5];
+    }
+  }
+}
+
 const TILE = 32, COLS = 32, ROWS = 21;
 
 class FarmWorld {
   constructor(canvas, onArrive) {
     this.canvas = canvas; this.ctx = canvas.getContext('2d'); this.onArrive = onArrive;
-    this.avatar = {x: 16.5 * TILE, y: 18.5 * TILE, facing: 'down'};
+    this.avatar = {x: 8.5 * TILE, y: 8.5 * TILE, facing: 'up'};
     this.path = []; this.active = 'cultivation'; this.phase = 'cultivation'; this.targetStation = null;
     this.keys = new Set(); this.moving = false; this.last = 0; this.cloudy = false; this.led = false;
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.weatherMix = 0; this.walkTime = 0; this.images = {}; this.artReady = false;
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    motion.addEventListener('change', e => {this.reduced = e.matches;});
+    Promise.all(Object.entries(SCENE_ASSETS).map(([key, source]) => new Promise(resolve => {
+      const image = new Image(); this.images[key] = image;
+      image.onload = resolve; image.onerror = () => {console.error(`Could not load scene asset: ${key}`); resolve();}; image.src = source;
+    }))).then(() => {this.artReady = true; this.cacheGround();});
     this.resizeObserver = new ResizeObserver(() => this.resize()); this.resizeObserver.observe(canvas);
     canvas.addEventListener('pointerdown', event => this.pointer(event));
     document.addEventListener('keydown', e => {
@@ -455,75 +784,12 @@ class FarmWorld {
         this.avatar.facing = dx ? dx > 0 ? 'right' : 'left' : dy > 0 ? 'down' : 'up'; this.moving = !!(dx || dy);
       }
     }
+    if (this.moving && !paused) this.walkTime += dt;
+    this.weatherMix += ((this.cloudy ? 1 : 0) - this.weatherMix) * Math.min(1, dt * (this.reduced ? 100 : 1.3));
     this.draw(t); requestAnimationFrame(n => this.frame(n));
   }
-  draw(t) {
-    const c = this.ctx, w = this.width || 1024, h = this.height || 560, scale = this.scale || 1;
-    this.camX = Math.max(0, Math.min(COLS * TILE - w / scale, this.avatar.x - w / scale / 2));
-    this.camY = Math.max(0, Math.min(ROWS * TILE - h / scale, this.avatar.y - h / scale / 2));
-    c.setTransform(this.dpr || 1, 0, 0, this.dpr || 1, 0, 0); c.clearRect(0, 0, w, h);
-    c.save(); c.scale(scale, scale); c.translate(-this.camX, -this.camY); c.imageSmoothingEnabled = false;
-    const rect = (x, y, ww, hh, color) => {c.fillStyle = color; c.fillRect(Math.round(x), Math.round(y), ww, hh);};
-    for (let y = 0; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
-      const path = [8, 9, 16, 18].includes(y) || [7, 16, 22, 25].includes(x);
-      rect(x * 32, y * 32, 32, 32, x >= 30 ? '#69aeb7' : path ? ((x + y) % 3 ? '#d8be82' : '#d2b77a') : ((x * 7 + y * 13) % 5 ? '#93ad66' : '#8ba35e'));
-      if (!path && x < 30 && !this.blocked(x, y) && (x * 3 + y * 7) % 7 === 0) {rect(x * 32 + 5, y * 32 + 22, 3, 5, '#78974f'); rect(x * 32 + 8, y * 32 + 19, 3, 8, '#78974f');}
-      if (x >= 30 && (x + y) % 2 === 0) rect(x * 32 + ((this.reduced ? 0 : t / 120) % 16), y * 32 + 14, 16, 3, '#a2ced0');
-    }
-    // Fence and small orchard frame the facility.
-    for (let x = 1; x < 30; x++) {rect(x * 32, 24, 4, 20, '#a28358'); rect(x * 32, 29, 32, 4, '#c2a677');}
-    for (const [x, y] of [[44, 87], [446, 72], [898, 68], [47, 250], [932, 300], [65, 577]]) {
-      rect(x + 12, y + 34, 12, 27, '#755b3e'); rect(x, y + 8, 40, 37, '#547d48'); rect(x + 7, y, 29, 45, '#648d4b'); rect(x + 4, y + 20, 8, 8, '#86a359');
-    }
-    for (const [id, s] of Object.entries(STATIONS)) {
-      const x = s.x * 32, y = s.y * 32, sw = s.w * 32, sh = s.h * 32;
-      rect(x + 5, y + 9, sw, sh, '#75894e');
-      if (id === 'cultivation') {
-        for (let row = 0; row < 2; row++) {
-          const py = y + row * 66;
-          rect(x, py, sw, 60, '#d0c79c'); rect(x + 6, py + 6, sw - 12, 47, '#487c58'); rect(x + 12, py + 11, sw - 24, 14, '#639665');
-          rect(x + 10, py + 29, sw - 20, 4, '#3e6d50'); rect(x + sw / 2 - 3, py + 6, 6, 47, '#c5b98a');
-          for (let a = 0; a < 6; a++) rect(x + 25 + a * 38, py + 37 + (this.reduced ? 0 : Math.sin(t / 450 + a) * 4), 4, 3, '#83b67a');
-        }
-      } else if (id === 'weather') {
-        rect(x, y + 20, sw, sh - 20, '#b0c0a0'); rect(x + 5, y + 28, sw - 10, sh - 35, '#668c72');
-        for (let k = 0; k < 5; k++) {rect(x + 10 + k * 43, y + 28, 5, sh - 38, '#dbe1bb'); rect(x + 15 + k * 43, y + 46, 29, 18, this.led ? '#f1d470' : '#90b19b');}
-        rect(x - 4, y + 14, sw + 8, 11, '#d5d7b1'); rect(x + 10, y + 3, sw - 20, 11, '#d5d7b1'); rect(x + 24, y - 6, sw - 48, 11, '#d5d7b1');
-        rect(x + sw / 2 - 17, y + sh - 46, 34, 46, '#416a57');
-      } else if (id === 'processing') {
-        rect(x, y + 26, sw, sh - 26, '#d1aa74'); rect(x - 9, y + 6, sw + 18, 37, '#985b43'); rect(x + 2, y - 5, sw - 4, 12, '#ac6b4d');
-        for (let k = 0; k < 3; k++) {rect(x + 10 + k * 64, y + 9, 51, 22, '#3c6271'); rect(x + 14 + k * 64, y + 12, 43, 4, '#74939b');}
-        rect(x + 26, y + 60, 42, 34, '#f1d9a6'); rect(x + 124, y + 54, 43, 74, '#765438');
-        if (['recovery', 'delivery', 'results'].includes(this.phase)) {rect(x + 178, y + 90, 24, 26, '#bb8c4f'); rect(x + 181, y + 95, 18, 4, '#e1c386');}
-      } else if (id === 'recovery') {
-        rect(x + 10, y + 12, 77, 98, '#7c9991'); rect(x + 5, y + 3, 87, 18, '#c5d0b4'); rect(x + 12, y + 33, 73, 9, '#a6c5be');
-        rect(x + 112, y + 36, 65, 74, '#85a89e'); rect(x + 108, y + 27, 73, 17, '#d0d8bd');
-        rect(x + 88, y + 76, 27, 10, '#d3cf9c'); rect(x + 44, y + 111, 12, 18, '#547c75');
-      } else {
-        rect(x + 8, y + 26, sw - 16, sh - 26, '#c5a475'); rect(x - 2, y + 10, sw + 4, 25, '#c4824d');
-        for (let k = 0; k < 6; k++) rect(x + k * 32, y + 10, 16, 25, '#edd0a0');
-        rect(x + 20, y + 58, sw - 40, 12, '#84603d'); rect(x + 24, y + 71, 9, 24, '#84603d'); rect(x + sw - 34, y + 71, 9, 24, '#84603d');
-      }
-      const active = id === this.active;
-      const signWidth = Math.max(102, s.name.length * 8 + 24);
-      rect(x + sw / 2 - signWidth / 2 + 2, y + sh + 14, signWidth, 27, '#58663b');
-      rect(x + sw / 2 - signWidth / 2, y + sh + 11, signWidth, 27, active ? '#f6dd94' : '#f1e5be');
-      c.fillStyle = '#324e3b'; c.font = 'bold 14px system-ui'; c.textAlign = 'center'; c.fillText(s.name, x + sw / 2, y + sh + 30);
-      if (active && this.enabled) {
-        const py = y - 22 - (this.reduced ? 0 : Math.sin(t / 250) * 4);
-        rect(x + sw / 2 - 9, py, 18, 12, '#f6dc81'); rect(x + sw / 2 - 5, py + 12, 10, 5, '#f6dc81'); rect(x + sw / 2 - 2, py + 17, 4, 4, '#f6dc81');
-      }
-    }
-    if (this.path.length) {const p = this.path.at(-1); rect(p.x - 5, p.y - 5, 10, 10, '#f5e8b2');}
-    const ax = Math.round(this.avatar.x), ay = Math.round(this.avatar.y), walk = this.moving && !this.reduced ? Math.sin(t / 90) * 3 : 0;
-    c.fillStyle = '#59664466'; c.beginPath(); c.ellipse(ax, ay + 6, 12, 5, 0, 0, 7); c.fill();
-    rect(ax - 7, ay - 9, 6, 15 + walk, '#3d4d54'); rect(ax + 1, ay - 9, 6, 15 - walk, '#3d4d54');
-    rect(ax - 11, ay - 28, 22, 23, '#eee8c8'); rect(ax - 3, ay - 25, 6, 18, '#4b8178'); rect(ax - 15, ay - 26 + walk, 5, 17, '#e3d8b9'); rect(ax + 10, ay - 26 - walk, 5, 17, '#e3d8b9');
-    rect(ax - 8, ay - 43, 16, 16, '#d4a878'); rect(ax - 10, ay - 47, 20, 10, '#574535'); rect(ax - 10, ay - 41, 4, 10, '#574535');
-    if (this.avatar.facing !== 'up') {rect(ax + (this.avatar.facing === 'left' ? -5 : 4), ay - 35, 2, 2, '#3d3d32');}
-    if (this.cloudy) {c.fillStyle = '#65778316'; c.fillRect(0, 0, 1024, 672);}
-    c.restore();
-  }
+  cacheGround() {cacheSceneGround(this);}
+  draw(t) {drawFarmScene(this, t);}
 }
 
 
@@ -583,7 +849,7 @@ function offerContract(id) {
   $('start-mission').onclick = () => {
     $('start-mission').disabled = true;
     state = createState(id); run = createRun({...entryConfig}, Date.now()); deadline = run.config.minutes === null ? 0 : run.startedAt + run.config.minutes * 60 * 1000;
-    world.avatar = {x: 16.5 * 32, y: 18.5 * 32, facing: 'up'};
+    world.avatar = {x: 8.5 * 32, y: 8.5 * 32, facing: 'up'};
     dialog.close(); save(); render(); toast('Encomenda recebida. Vá ao cultivo para começar.');
   };
 }
