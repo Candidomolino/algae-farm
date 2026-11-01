@@ -35,7 +35,7 @@
       <div class="resource"><small>ORÇAMENTO</small><strong><span id="credits">100</span><em> / 100</em></strong></div>
       <div class="resource"><small>ENERGIA</small><strong><span id="energy">55</span><em> / 55</em></strong></div>
       <div class="resource product-resource"><small>PRODUTO</small><strong><span id="product">0</span><em id="target"> / 18</em></strong></div>
-      <div class="timer"><small>TEMPO DE JOGO</small><strong id="timer">06:00</strong></div>
+      <div class="timer" hidden><small>TEMPO DE JOGO</small><strong id="timer">LIVRE</strong></div>
     </section>
     <div class="workbench">
       <aside class="sidebar">
@@ -43,7 +43,7 @@
           <p class="eyebrow"><span class="status-dot"></span> MICROALGAS · BIOPRODUTOS</p>
           <h1>Pequenas algas.<br>Grandes escolhas.</h1>
           <p class="intro">Do cultivo ao produto: conduza uma encomenda pela fazenda e descubra o custo de cada decisão.</p>
-          <p class="session-label">6 minutos <span>·</span> Joguem em dupla</p>
+          <p class="session-label">No seu ritmo <span>·</span> Explore e experimente</p>
           <p class="activity-label" id="activity-label" hidden></p>
           <div class="contract-choices">
             <button class="contract-card" data-contract="biodiesel"><span class="contract-symbol">◒</span><span><strong>Produzir biodiesel</strong><small>Biomassa, lipídios e conversão</small><em>Escolher encomenda <b>→</b></em></span></button>
@@ -70,7 +70,7 @@
         <div class="map-footer"><p id="control-hint">Explore uma biorrefinaria de microalgas.</p><div class="map-actions"><button class="secondary notebook-button" id="field-notebook" hidden>Caderno <span id="discovery-count">0/3</span></button><button class="secondary" id="inspect" hidden>Observar <span>F</span></button><button class="secondary" id="interact" hidden>Estação <span>E</span></button></div></div>
       </section>
     </div>
-    <footer class="page-footer"><span>ALGAE FARM <span class="version-label">· VERSÃO 0.5</span></span><span>Produção, composição e recursos.</span><a class="art-credit" href="https://kenney.nl/assets/tiny-farm" target="_blank" rel="noopener">Arte: Kenney · CC0</a><button class="text-button" id="teacher">Professor</button><button class="text-button" id="restart" hidden>Recomeçar</button></footer>
+    <footer class="page-footer"><span>ALGAE FARM <span class="version-label">· VERSÃO 0.5.1</span></span><span>Produção, composição e recursos.</span><a class="art-credit" href="https://kenney.nl/assets/tiny-farm" target="_blank" rel="noopener">Arte: Kenney · CC0</a><button class="text-button" id="teacher">Professor</button><button class="text-button" id="restart" hidden>Recomeçar</button></footer>
   </main>
 </div>
 <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-head"><p class="eyebrow" id="dialog-label"></p><button class="icon-button" id="close-dialog" aria-label="Fechar">×</button></div><div id="dialog-body"></div></dialog>
@@ -406,7 +406,7 @@ function compareAttempts(previous, current) {
 }
 
 
-const APP_VERSION = '0.5.0';
+const APP_VERSION = '0.5.1';
 
 function parsedSeed(value) {
   if (typeof value !== 'string' || !/^\d+$/.test(value)) return null;
@@ -420,7 +420,7 @@ function activityConfig(search = '') {
   const scenario = query.get('cenario') === 'fixo' ? 'fixed' : 'random';
   return {
     contract: ['biodiesel', 'material'].includes(requested) ? requested : null,
-    minutes: query.get('minutos') === 'livre' ? null : query.get('minutos') === '10' ? 10 : 6,
+    minutes: query.get('minutos') === '6' ? 6 : query.get('minutos') === '10' ? 10 : null,
     navigation: query.get('modo') === 'direto' ? 'direct' : 'explore',
     scenario, seed: scenario === 'fixed' ? null : parsedSeed(query.get('semente'))
   };
@@ -430,7 +430,7 @@ function activityUrl(base, config) {
   const url = new URL(base);
   url.search = ''; url.hash = '';
   if (config.contract) url.searchParams.set('contrato', config.contract);
-  if (config.minutes !== 6) url.searchParams.set('minutos', config.minutes === null ? 'livre' : String(config.minutes));
+  if ([6, 10].includes(config.minutes)) url.searchParams.set('minutos', String(config.minutes));
   if (config.navigation === 'direct') url.searchParams.set('modo', 'direto');
   if (config.scenario === 'fixed') url.searchParams.set('cenario', 'fixo');
   else if (Number.isInteger(config.seed) && config.seed >= 0 && config.seed <= 0xffffffff) url.searchParams.set('semente', String(config.seed));
@@ -447,14 +447,15 @@ function recordDecision(run, phase, now) {
 }
 
 function restoreRun(raw, deadline, state) {
+  const savedMinutes = raw?.config?.minutes === null ? null : [6, 10].includes(raw?.config?.minutes) ? raw.config.minutes : deadline > 0 ? 6 : null;
   const config = raw?.config ? activityConfig(new URLSearchParams({
-    contrato: raw.config.contract || '', minutos: raw.config.minutes === null ? 'livre' : String(raw.config.minutes),
+    contrato: raw.config.contract || '', minutos: savedMinutes === null ? 'livre' : String(savedMinutes),
     modo: raw.config.navigation === 'direct' ? 'direto' : ''
-  }).toString()) : activityConfig();
+  }).toString()) : activityConfig(savedMinutes === null ? '' : `?minutos=${savedMinutes}`);
   // The reconstructed model is authoritative, including legacy classic saves.
   config.seed = state.seed ?? null;
   config.scenario = config.seed === null ? 'fixed' : 'random';
-  const inferredStart = deadline - (config.minutes || 6) * 60_000;
+  const inferredStart = deadline > 0 ? deadline - (config.minutes || 6) * 60_000 : 0;
   const startedAt = Number.isFinite(raw?.startedAt) && raw.startedAt >= 0 ? raw.startedAt : inferredStart;
   let previous = 0;
   const decisions = state.history.map(h => {
@@ -1002,7 +1003,7 @@ let state = null, deadline = 0, run = null, saveAvailable = true, toastTimer;
 let attemptMemory = {};
 const config = () => run?.config || entryConfig;
 const timedOut = () => config().minutes !== null && Date.now() >= deadline;
-const durationLabel = () => config().minutes === null ? 'sem relógio' : `${config().minutes} minutos`;
+const durationLabel = () => config().minutes === null ? 'jogo livre, sem limite de tempo' : `${config().minutes} minutos`;
 
 function toast(message) {
   $('toast').textContent = message; $('toast').classList.add('visible'); clearTimeout(toastTimer);
@@ -1055,7 +1056,7 @@ function readSave() {
     const raw = localStorage.getItem(SAVE_KEY);
     if (raw) {
       try {const parsed = JSON.parse(raw); const restored = restoreSave(parsed); state = restored.state; deadline = restored.deadline; run = restoreRun(parsed.run, deadline, state); render();
-        if (state.phase === 'results') resultScreen(); else if (timedOut()) finish('timeout'); else toast(config().minutes === null ? 'Ensaio retomado, sem relógio.' : 'Missão retomada. O tempo continua a partir do início original.');}
+        if (state.phase === 'results') resultScreen(); else if (timedOut()) finish('timeout'); else toast(config().minutes === null ? 'Jogo livre retomado. Continue no seu ritmo.' : 'Missão retomada. O tempo continua a partir do início original.');}
       catch {localStorage.removeItem(SAVE_KEY); toast('O salvamento anterior não é compatível. Escolha uma nova encomenda.');}
     }
   } catch {saveAvailable = false;}
@@ -1069,10 +1070,10 @@ function reset() {
 }
 function offerContract(id) {
   const contract = CONTRACTS[id];
-  modal('SUA ENCOMENDA', `<h2 id="dialog-title">${contract.name}</h2><p class="dialog-copy">${contract.brief}</p><div class="question-box">${contract.specification}</div><p class="dialog-copy"><strong>Processo:</strong> ${contract.chain}.</p><ol class="instruction-list"><li><strong>Visite quatro estações.</strong> Toque no mapa ou use o botão “Ir à estação”. No computador, use as setas ou WASD e a tecla E.</li><li><strong>Compare antes de confirmar.</strong> Os custos são mostrados em fichas; você tem 100 de orçamento, 55 de energia e 14 turnos de processo.</li><li><strong>Entregue e explique sua estratégia.</strong> O relógio de 6 minutos começa ao entrar na fazenda e continua durante a leitura e fora da aba.</li></ol><p class="model-note">UB = unidades de biomassa do jogo. As frações e rendimentos são hipóteses didáticas. Os turnos de processo são diferentes dos minutos de jogo.</p><div class="dialog-actions"><button class="secondary" id="back-contract">Voltar</button><button class="primary" id="start-mission">Entrar na fazenda →</button></div>`);
+  modal('SUA ENCOMENDA', `<h2 id="dialog-title">${contract.name}</h2><p class="dialog-copy">${contract.brief}</p><div class="question-box">${contract.specification}</div><p class="dialog-copy"><strong>Processo:</strong> ${contract.chain}.</p><ol class="instruction-list"><li><strong>Visite quatro estações.</strong> Toque no mapa ou use o botão “Ir à estação”. No computador, use as setas ou WASD e a tecla E.</li><li><strong>Compare antes de confirmar.</strong> Os custos são mostrados em fichas; você tem 100 de orçamento, 55 de energia e 14 turnos de processo.</li><li><strong>Entregue e explique sua estratégia.</strong> Jogue no seu ritmo e teste outras rotas quando quiser.</li></ol><p class="model-note">UB = unidades de biomassa do jogo. As frações e rendimentos são hipóteses didáticas. Os turnos de processo são diferentes dos minutos de jogo.</p><div class="dialog-actions"><button class="secondary" id="back-contract">Voltar</button><button class="primary" id="start-mission">Entrar na fazenda →</button></div>`);
   $('back-contract').onclick = () => dialog.close();
   const instructions = body.querySelectorAll('.instruction-list li');
-  instructions[2].innerHTML = `<strong>Entregue e explique sua estratégia.</strong> ${config().minutes === null ? 'Este é um ensaio sem relógio.' : `O relógio de ${config().minutes} minutos começa ao entrar na fazenda e continua durante a leitura e fora da aba.`}`;
+  instructions[2].innerHTML = `<strong>Explore e experimente.</strong> ${config().minutes === null ? 'Jogue no seu ritmo, descubra os detalhes do mapa e teste outras rotas quando quiser.' : `Esta rodada tem ${config().minutes} minutos a partir da entrada na fazenda.`}`;
   if (config().navigation === 'direct') instructions[0].innerHTML = '<strong>Compare quatro decisões.</strong> O botão Abrir decisão leva diretamente às escolhas. O mapa continua disponível para exploração.';
   const adventureNote = document.createElement('p'); adventureNote.className = 'scenario-intro';
   adventureNote.textContent = config().scenario === 'fixed' ? 'Cenário fixo: a frente nublada e os custos seguem o roteiro de referência.' : 'Cada lote pode receber um clima e uma condição de operação diferentes. Os efeitos aparecem antes da decisão, sem sorteios ao confirmar. Há três descobertas opcionais pelo mapa.';
@@ -1093,7 +1094,7 @@ function render() {
   $('field-notebook').hidden = !playing; $('inspect').hidden = !playing;
   if (!state) {
     $('map-caption').textContent = 'Cultivar é só o começo.'; $('weather-label').textContent = '☀ Céu aberto'; $('control-hint').textContent = 'Explore uma biorrefinaria de microalgas.';
-    document.querySelector('.session-label').textContent = `${durationLabel()} · Joguem em dupla`;
+    document.querySelector('.session-label').textContent = config().minutes === null ? 'No seu ritmo · Explore e experimente' : `${durationLabel()} · Explore e experimente`;
     document.querySelectorAll('[data-contract]').forEach(button => button.hidden = !!entryConfig.contract && button.dataset.contract !== entryConfig.contract);
     $('activity-label').hidden = false;
     $('activity-label').textContent = `${entryConfig.scenario === 'fixed' ? 'Cenário fixo de referência.' : entryConfig.seed !== null ? `Cenário compartilhado ${entryConfig.seed}.` : 'Eventos a cada lote · 3 descobertas escondidas.'}${entryConfig.contract ? ` Encomenda: ${CONTRACTS[entryConfig.contract].name}.` : ''}`;
@@ -1138,6 +1139,7 @@ function render() {
 }
 function updateTimer() {
   if (!state) return;
+  $('timer').parentElement.hidden = config().minutes === null;
   if (config().minutes === null) {$('timer').textContent = state.phase === 'results' ? 'FIM' : 'LIVRE'; $('timer').parentElement.classList.remove('urgent'); return;}
   const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
   $('timer').textContent = state.phase === 'results' ? 'FIM' : `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`;
@@ -1281,9 +1283,10 @@ function showOrder() {
   $('close-order').onclick = () => dialog.close();
 }
 function help() {
-  modal('COMO JOGAR', `<h2 id="dialog-title">Explore. Compare. Decida.</h2><ol class="instruction-list"><li>O botão <strong>Ir à estação</strong> leva o personagem até a próxima decisão. Você também pode tocar na estação ou caminhar com as setas.</li><li>Leia os custos, escolha uma opção e confirme. Revisitar uma estação não cobra de novo.</li><li>Complete cultivo, energia, processamento e recuperação. Depois, visite a expedição.</li><li>O tempo de jogo é de <strong>6 minutos</strong>. A janela de <strong>14 turnos</strong> representa tempo de processo e limita algumas combinações.</li></ol><p class="dialog-copy">A missão fica salva neste navegador quando possível. O relógio continua se você sair da aba. Se o tempo terminar, seu relatório preserva o resultado parcial.</p><details><summary>Hipóteses e referências para a discussão</summary><p class="model-note">As frações de biomassa, os rendimentos, os custos e as propriedades aceitas são regras didáticas. Os perfis de acúmulo são específicos de cada contrato, sem representar uma única espécie universal.</p><p class="source-links"><a href="https://doi.org/10.3390/microorganisms10030566" target="_blank" rel="noopener">Cultivo e acúmulo de lipídios</a><br><a href="https://afdc.energy.gov/fuels/biodiesel-production" target="_blank" rel="noopener">Transesterificação e biodiesel</a><br><a href="https://doi.org/10.1021/acssuschemeng.3c04133" target="_blank" rel="noopener">Recuperação de amido de microalgas para filmes</a></p></details><div class="dialog-actions">${state && state.phase !== 'results' ? '<button class="secondary" id="end-early">Encerrar e ver parcial</button>' : ''}<button class="primary" id="close-help">Voltar</button></div>`);
+  modal('COMO JOGAR', `<h2 id="dialog-title">Explore. Compare. Decida.</h2><ol class="instruction-list"><li>O botão <strong>Ir à estação</strong> leva o personagem até a próxima decisão. Você também pode tocar na estação ou caminhar com as setas.</li><li>Leia os custos, escolha uma opção e confirme. Revisitar uma estação não cobra de novo.</li><li>Complete cultivo, energia, processamento e recuperação. Depois, visite a expedição.</li><li>Jogue no seu ritmo, sem contagem regressiva. A janela de <strong>14 turnos</strong> representa tempo de processo e limita algumas combinações.</li></ol><p class="dialog-copy">Seu lote fica salvo neste navegador quando possível. Você pode continuar depois, explorar as pistas e experimentar outras rotas.</p><details><summary>Hipóteses e referências para a discussão</summary><p class="model-note">As frações de biomassa, os rendimentos, os custos e as propriedades aceitas são regras didáticas. Os perfis de acúmulo são específicos de cada contrato, sem representar uma única espécie universal.</p><p class="source-links"><a href="https://doi.org/10.3390/microorganisms10030566" target="_blank" rel="noopener">Cultivo e acúmulo de lipídios</a><br><a href="https://afdc.energy.gov/fuels/biodiesel-production" target="_blank" rel="noopener">Transesterificação e biodiesel</a><br><a href="https://doi.org/10.1021/acssuschemeng.3c04133" target="_blank" rel="noopener">Recuperação de amido de microalgas para filmes</a></p></details><div class="dialog-actions">${state && state.phase !== 'results' ? '<button class="secondary" id="end-early">Encerrar e ver parcial</button>' : ''}<button class="primary" id="close-help">Voltar</button></div>`);
   $('close-help').onclick = () => dialog.close();
-  body.querySelector('.instruction-list li:nth-child(4)').innerHTML = `O tempo desta atividade é <strong>${durationLabel()}</strong>. A janela de <strong>14 turnos</strong> representa tempo de processo e limita algumas combinações.`;
+  body.querySelector('.instruction-list li:nth-child(4)').innerHTML = `${config().minutes === null ? '<strong>Jogo livre, sem limite de tempo.</strong>' : `Esta rodada tem <strong>${durationLabel()}</strong>.`} A janela de <strong>14 turnos</strong> representa tempo de processo e limita algumas combinações.`;
+  if (config().minutes !== null) body.querySelector('.dialog-copy').textContent = 'Esta rodada usa um cronômetro escolhido pelo professor. O prazo continua fora da aba; o relatório preserva o resultado se o tempo terminar.';
   const keyboardHelp = document.createElement('p'); keyboardHelp.className = 'dialog-copy'; keyboardHelp.textContent = 'Você pode usar Abrir decisão sem caminhar. Para caminhar pelo teclado, coloque o foco no mapa com Tab e use as setas ou WASD; E interage com uma estação.';
   body.querySelector('.instruction-list').after(keyboardHelp);
   const explorationHelp = document.createElement('p'); explorationHelp.className = 'scenario-intro'; explorationHelp.textContent = 'O caderno guarda três descobertas opcionais. Use as pistas, aproxime o pesquisador e toque em Observar, ou use F com o mapa em foco. Eventos revelam mudanças de clima e operação antes de você escolher; recarregar mantém o mesmo lote.'; keyboardHelp.after(explorationHelp);
@@ -1298,7 +1301,7 @@ function openCurrentDecision() {
 
 function teacherSetup() {
   const current = config();
-  modal('PARA O PROFESSOR', `<h2 id="dialog-title">Preparar uma atividade</h2><p class="dialog-copy">Escolha a encomenda, o tempo e a forma de navegar. O link abre o tutorial; o relógio começa quando a dupla entra na fazenda. A missão em andamento neste dispositivo permanece como está.</p><div class="teacher-fields"><label>Encomenda<select id="teacher-contract"><option value="">A dupla escolhe</option><option value="biodiesel">Biodiesel</option><option value="material">Bioplástico</option></select></label><label>Tempo da missão<select id="teacher-minutes"><option value="6">6 minutos</option><option value="10">10 minutos</option><option value="livre">Ensaio sem relógio</option></select></label><label>Navegação<select id="teacher-navigation"><option value="explorar">Explorar a fazenda</option><option value="direto">Abrir decisões diretamente</option></select></label></div><label class="teacher-link-label">Link da atividade<input id="teacher-url" type="url" readonly></label><p class="model-note">O ensaio sem relógio ajuda a revisar o conteúdo. Os custos, as quatro decisões e as metas são iguais em todas as configurações. Um novo link não substitui uma missão já salva: use Recomeçar nesse aparelho para iniciar a atividade do link.</p><div class="dialog-actions"><button class="secondary" id="copy-activity">Copiar link</button><a class="primary" id="open-activity" target="_blank" rel="noopener">Abrir atividade ↗</a></div>`);
+  modal('PARA O PROFESSOR', `<h2 id="dialog-title">Preparar uma atividade</h2><p class="dialog-copy">O padrão é jogo livre, sem limite de tempo. Escolha a encomenda e a navegação; uma rodada com cronômetro é opcional. O link abre a apresentação do jogo.</p><div class="teacher-fields"><label>Encomenda<select id="teacher-contract"><option value="">A dupla escolhe</option><option value="biodiesel">Biodiesel</option><option value="material">Bioplástico</option></select></label><label>Tempo da missão<select id="teacher-minutes"><option value="livre">Jogo livre (padrão)</option><option value="6">Rodada de 6 minutos</option><option value="10">Rodada de 10 minutos</option></select></label><label>Navegação<select id="teacher-navigation"><option value="explorar">Explorar a fazenda</option><option value="direto">Abrir decisões diretamente</option></select></label></div><label class="teacher-link-label">Link da atividade<input id="teacher-url" type="url" readonly></label><p class="model-note">O ensaio sem relógio ajuda a revisar o conteúdo. Os custos, as quatro decisões e as metas são iguais em todas as configurações. Um novo link não substitui uma missão já salva: use Recomeçar nesse aparelho para iniciar a atividade do link.</p><div class="dialog-actions"><button class="secondary" id="copy-activity">Copiar link</button><a class="primary" id="open-activity" target="_blank" rel="noopener">Abrir atividade ↗</a></div>`);
   $('teacher-contract').value = current.contract || '';
   $('teacher-minutes').value = current.minutes === null ? 'livre' : String(current.minutes);
   $('teacher-navigation').value = current.navigation === 'direct' ? 'direto' : 'explorar';
