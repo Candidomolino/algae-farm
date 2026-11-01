@@ -4,12 +4,12 @@ A Portuguese browser game for a Biochemical Engineering class about microalgae, 
 
 [Play Algae Farm](https://candidomolino.github.io/algae-farm/)
 
-Version 0.4 adds Kenney CC0 terrain, a researcher with four-direction walking animation, aerated algae raceways, drifting clouds, and greenhouse lighting that responds to the LED choice. The mobile layout puts the farm first. Model version 0.1.0 and teaching quantities are unchanged.
+Version 0.5 adds balanced seeded events: three weather profiles and three operating conditions, revealed before the affected choice. The same scenario code repeats the same conditions after reload or across pairs. Reports explain the effects and comparisons identify whether event conditions match. Three optional discoveries fill a field notebook, including a hidden EEL/USP emblem. Discoveries have cosmetic rewards.
 
-[Download editable Piskel and Tiled art sources](https://candidomolino.github.io/algae-farm/Algae_Farm_Art_Source.zip). The archive includes editing instructions and the original Kenney licenses. Custom sprites were constructed in code and the walk cycle imported and reviewed in Piskel. The layered map was exported and rendered with Tiled 1.12.2.
+[Fixed reference scenario](https://candidomolino.github.io/algae-farm/?cenario=fixo) preserves the original teaching quantities. Teacher controls support shared scenario codes, 6-minute and 10-minute missions, untimed rehearsal, assigned contracts and direct decisions. Model 0.2.0 safely restores prior fixed saves.
 
-Kenney sources: [Tiny Town](https://kenney.nl/assets/tiny-town) and [Tiny Farm](https://kenney.nl/assets/tiny-farm), CC0. Researcher, aerators, microalgae equipment, buildings and interface are original project artwork.
+[Download editable Piskel and Tiled art sources](https://candidomolino.github.io/algae-farm/Algae_Farm_Art_Source.zip). The archive includes editing instructions and original licenses. Custom sprites were constructed in code and the walk cycle reviewed in Piskel. The map was exported and rendered with Tiled 1.12.2.
 
-The game is self-contained in index.html and needs no account or external runtime services. Teacher controls support 6-minute and 10-minute missions, untimed rehearsal, assigned contracts and direct decisions. Reports include process calculations, two concept questions, and comparison with a previous delivery on the same device.
+Terrain and small props: Kenney [Tiny Town](https://kenney.nl/assets/tiny-town) and [Tiny Farm](https://kenney.nl/assets/tiny-farm), CC0. Original project art supplies the researcher, aerators, algae equipment, buildings and interface. The unmodified EEL/USP logo comes from the [official EEL library visual identity page](https://www.bibliotecas.eel.usp.br/servicos/identidade_visual); this institutional mark is separate from the CC0 assets.
 
-All quantities are teaching tokens, not measured industrial performance. No emissions calculation or fuel/material certification is implied.
+The self-contained HTML needs no account or external runtime service. All quantities and event chances are teaching conventions, not measured industrial performance. No emissions calculation or product certification is implied.
