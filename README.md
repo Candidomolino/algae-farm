@@ -4,7 +4,7 @@ Jogo didático em português para explorar cultivo de microalgas, biodiesel e bi
 
 [Jogar Algae Farm](https://candidomolino.github.io/algae-farm/)
 
-Versão 0.8.0 · modelo 0.4.0. Apresentação de biolaboratório com fotobiorreatores de vidro, caminhos de serviço, instrumentos, culturas em movimento, fluxo de produção e identificação da espécie. A navegação tem câmera suave, indicação de destino e feedback de decisões. A preferência de movimento reduzido mantém a apresentação estática.
+Versão 0.8.1 · modelo 0.4.0. Fazenda em luz diurna, com gramado natural, concreto e metal claros, fotobiorreatores de vidro, painéis claros e texto verde-escuro. Os eventos nublados mantêm a aparência de dia. Culturas animadas, fluxo de produção, câmera suave, indicação de destino e feedback de decisões respeitam a preferência de movimento reduzido.
 
 Jogo livre, sem cronômetro por padrão. Venda lotes, ganhe moedas, melhore a fazenda e desbloqueie novas culturas:
 
