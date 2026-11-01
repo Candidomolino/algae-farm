@@ -1,7 +1,7 @@
 {
   "format": "algae-farm-public-versions",
-  "stableVersion": "1.0.0",
-  "updatedAt": "2026-11-01T14:30:32.448856+00:00",
+  "stableVersion": "1.0.1",
+  "updatedAt": "2026-11-01T17:01:12.482022+00:00",
   "versions": [
     {
       "version": "0.8.1",
@@ -85,6 +85,28 @@
         },
         {
           "path": "v1.0.0/Algae_Farm_Art_Source.zip",
+          "bytes": 135955,
+          "sha256": "598DA77602F854B2A388D653B59F7FC305FE0A5F6E152CFD9B7A0408EA12625A",
+          "visibility": "archive"
+        }
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "modelVersion": "0.5.0",
+      "status": "stable",
+      "publicUrl": "https://candidomolino.github.io/algae-farm/versions/v1.0.1/",
+      "sourceBuildMatchesOriginal": true,
+      "automatedChecksPassed": 142,
+      "files": [
+        {
+          "path": "v1.0.1/index.html",
+          "bytes": 363803,
+          "sha256": "221754DF8C2669B0FC279C880327FD6A9DE817FD8C9E8F2E47B9621DE5FBC88A",
+          "visibility": "archive"
+        },
+        {
+          "path": "v1.0.1/Algae_Farm_Art_Source.zip",
           "bytes": 135955,
           "sha256": "598DA77602F854B2A388D653B59F7FC305FE0A5F6E152CFD9B7A0408EA12625A",
           "visibility": "archive"

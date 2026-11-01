@@ -1,6 +1,7 @@
 # Versões do Algae Farm
 
-- [Campanha atual 1.0.0](https://candidomolino.github.io/algae-farm/)
+- [Campanha atual 1.0.1](https://candidomolino.github.io/algae-farm/)
+- [1.0.1 — clareza na retomada de lotes clássicos](https://candidomolino.github.io/algae-farm/versions/v1.0.1/)
 - [1.0.0 — marco final](https://candidomolino.github.io/algae-farm/versions/v1.0.0/)
 - [1.0.0-rc.2 — revisão de celular, sincronização e linguagem](https://candidomolino.github.io/algae-farm/versions/v1.0.0-rc.2/)
 - [1.0.0-rc.1 — primeira integração](https://candidomolino.github.io/algae-farm/versions/v1.0.0-rc.1/)

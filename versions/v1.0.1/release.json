@@ -1,0 +1,47 @@
+{
+  "format": "algae-farm-release",
+  "formatVersion": 1,
+  "version": "1.0.1",
+  "modelVersion": "0.5.0",
+  "status": "stable",
+  "archivedAt": "2026-11-01T17:01:12.318013+00:00",
+  "note": "Clarifies resumed classic batches: historical recovered water is not new campaign stock, classic budget is separate and classic quizzes do not award new campaign benefits. Campaign calculations unchanged.",
+  "storageNamespace": "v02 / v10",
+  "storageKeys": {
+    "SAVE_KEY": "algae-farm-current-v10",
+    "ATTEMPT_KEY": "algae-farm-attempts-v02",
+    "FARM_KEY": "algae-farm-progress-v02",
+    "SPECIES_KEY": "algae-farm-species-v02"
+  },
+  "automatedChecksPassed": 142,
+  "checksEvidence": "verified from source archive",
+  "testsExecuted": true,
+  "sourceBuildMatchesOriginal": true,
+  "sourceArchiveVisibility": "local-only; never publish the full source ZIP automatically",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 363803,
+      "sha256": "221754DF8C2669B0FC279C880327FD6A9DE817FD8C9E8F2E47B9621DE5FBC88A",
+      "visibility": "archive"
+    },
+    {
+      "path": "Algae_Farm_Art_Source.zip",
+      "bytes": 135955,
+      "sha256": "598DA77602F854B2A388D653B59F7FC305FE0A5F6E152CFD9B7A0408EA12625A",
+      "visibility": "archive"
+    },
+    {
+      "path": "Algae_Farm_Source_v1.0.1.zip",
+      "bytes": 740979,
+      "sha256": "23D5D7DBD9DA2D664B415CE64DD9677A582A551169B1F8617D2E1E7C7C938642",
+      "visibility": "local-only"
+    },
+    {
+      "path": "source-files.json",
+      "bytes": 61773,
+      "sha256": "CC8E9AAAF6BB3F82034FF02EC40F4201E62CD2B8BE480EB3FE05270B29651000",
+      "visibility": "local-only"
+    }
+  ]
+}

@@ -1,11 +1,12 @@
-# Algae Farm — campanha 1.0.0
+# Algae Farm — campanha 1.0.1
 
 Jogo de exploração livre para uma aula de Engenharia Bioquímica. Após uma breve apresentação, os alunos cultivam microalgas, escolhem rotas de biodiesel ou bioplástico e comparam decisões, composição e uso de recursos. O padrão não tem cronômetro. A fazenda mantém a apresentação diurna, as animações de nuvens e culturas e os controles para celular.
 
 ## Jogar e escolher a versão
 
 - Campanha atual: https://candidomolino.github.io/algae-farm/
-- Marco final preservado: https://candidomolino.github.io/algae-farm/versions/v1.0.0/
+- Revisão de continuidade 1.0.1: https://candidomolino.github.io/algae-farm/versions/v1.0.1/
+- Marco final 1.0.0 preservado: https://candidomolino.github.io/algae-farm/versions/v1.0.0/
 - Integração inicial 1.0.0-rc.1: https://candidomolino.github.io/algae-farm/versions/v1.0.0-rc.1/
 - Revisão de uso 1.0.0-rc.2: https://candidomolino.github.io/algae-farm/versions/v1.0.0-rc.2/
 - Referência clássica 0.8.1: https://candidomolino.github.io/algae-farm/versions/v0.8.1/
@@ -59,3 +60,5 @@ O jogo é publicado no GitHub Pages pelo repositório https://github.com/Candido
 Terreno, árvores, cercas e pequenos objetos: Kenney Tiny Town e Tiny Farm, CC0, com licenças originais preservadas. Pesquisador, aeradores, equipamentos, edifícios e interface são arte original do projeto. A marca EEL/USP vem da identidade visual oficial da biblioteca, tem sua própria referência em `assets/institution/REFERENCE.txt` e não integra os recursos CC0. Não foram usados recursos pagos.
 
 Todos os perfis, probabilidades, perdas, moedas e rendimentos são parâmetros de ensino. O jogo não prevê produtividade industrial, emissões evitadas, qualidade certificada ou fim de vida do material. As referências científicas e os limites da adaptação estão no guia atual. O piloto com alunos, aparelhos e rede da sala continua parte da revisão docente.
+
+A revisão 1.0.1 esclarece a retomada de lotes clássicos: a água recuperada antiga continua como indicador histórico, sem entrada no estoque novo, e a revisão antiga não promete benefícios que só passam a valer nas entregas da campanha. O modelo 0.5.0 e os cálculos da campanha permanecem iguais.
