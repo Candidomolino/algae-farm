@@ -1,0 +1,47 @@
+{
+  "format": "algae-farm-release",
+  "formatVersion": 1,
+  "version": "1.0.0",
+  "modelVersion": "0.5.0",
+  "status": "stable",
+  "archivedAt": "2026-11-01T14:26:57.963253+00:00",
+  "note": "Final campaign. Six browser deliveries, phone resource frame, species unlocks, pH protection, contamination, river strain, supplies, multi-tab synchronization and archive isolation verified.",
+  "storageNamespace": "v02 / v10",
+  "storageKeys": {
+    "SAVE_KEY": "algae-farm-current-v10",
+    "ATTEMPT_KEY": "algae-farm-attempts-v02",
+    "FARM_KEY": "algae-farm-progress-v02",
+    "SPECIES_KEY": "algae-farm-species-v02"
+  },
+  "automatedChecksPassed": 142,
+  "checksEvidence": "verified from source archive",
+  "testsExecuted": true,
+  "sourceBuildMatchesOriginal": true,
+  "sourceArchiveVisibility": "local-only; never publish the full source ZIP automatically",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 362352,
+      "sha256": "E4DFF2DBE007183673E9DF3C6BC0A2957124357050666E5EE69C678B00D65257",
+      "visibility": "archive"
+    },
+    {
+      "path": "Algae_Farm_Art_Source.zip",
+      "bytes": 135955,
+      "sha256": "598DA77602F854B2A388D653B59F7FC305FE0A5F6E152CFD9B7A0408EA12625A",
+      "visibility": "archive"
+    },
+    {
+      "path": "Algae_Farm_Source_v1.0.0.zip",
+      "bytes": 740458,
+      "sha256": "494ADE2A1671A7F9610B55562B8E5962CEC4CEDD1BE505D6C05C98D39E41DCD8",
+      "visibility": "local-only"
+    },
+    {
+      "path": "source-files.json",
+      "bytes": 61773,
+      "sha256": "FCFE97A6347D21100FE15DA6448C866D7CABAB738833F7E38B7DA8CBFA0CCD1F",
+      "visibility": "local-only"
+    }
+  ]
+}
