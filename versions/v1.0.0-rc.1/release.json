@@ -1,0 +1,47 @@
+{
+  "format": "algae-farm-release",
+  "formatVersion": 1,
+  "version": "1.0.0-rc.1",
+  "modelVersion": "0.5.0",
+  "status": "candidate",
+  "archivedAt": "2026-11-01T14:14:09.778971+00:00",
+  "note": "Desktop core, persistent economy, quiz benefits and river replay verified; mobile and multiple-tab refinement pending.",
+  "storageNamespace": "v02 / v10",
+  "storageKeys": {
+    "SAVE_KEY": "algae-farm-current-v10",
+    "ATTEMPT_KEY": "algae-farm-attempts-v02",
+    "FARM_KEY": "algae-farm-progress-v02",
+    "SPECIES_KEY": "algae-farm-species-v02"
+  },
+  "automatedChecksPassed": 142,
+  "checksEvidence": "verified from source archive",
+  "testsExecuted": true,
+  "sourceBuildMatchesOriginal": true,
+  "sourceArchiveVisibility": "local-only; never publish the full source ZIP automatically",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 360607,
+      "sha256": "9D95E90E93FB0CDA4CDF059BC8C3AD933D41A170A4A4162F50B29DB070893B81",
+      "visibility": "archive"
+    },
+    {
+      "path": "Algae_Farm_Art_Source.zip",
+      "bytes": 135131,
+      "sha256": "A29D2AA37D3EB8BA2ACA0A361425D1BF72AF1A883BB1E7EA0AC66B1753E075EB",
+      "visibility": "archive"
+    },
+    {
+      "path": "Algae_Farm_Source_v1.0.0-rc.1.zip",
+      "bytes": 739079,
+      "sha256": "CEDC246D518C7417CAE1A77825C05B98E2C0CD5678C35E3CDFED5E639A238232",
+      "visibility": "local-only"
+    },
+    {
+      "path": "source-files.json",
+      "bytes": 61778,
+      "sha256": "EAEE860C06A7E984C6E58416852127F4773975C05AB0856A9568B6B9F0551B3D",
+      "visibility": "local-only"
+    }
+  ]
+}
